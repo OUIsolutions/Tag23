@@ -21,6 +21,11 @@ function run_loop(target){
 
     for(let i=0;i<target.children.length;i++){
         let child = target.children[i];
+
+        if(child.hasAttribute("start")){
+            child.style.display = "block";
+        }
+
         if(child.hasAttribute('case')){
             let condition = child.getAttribute('case');
             let result = get_evaluation_result(condition);
@@ -47,10 +52,11 @@ function run_loop(target){
 }
 function start(){
 
+    run_loop(document.body);
+
     setInterval(function(){
         run_loop(document.body);
     },100);
 }
-
 
 window.addEventListener('load',start);
