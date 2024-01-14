@@ -21,7 +21,19 @@ function run_loop(target){
 
     for(let i=0;i<target.children.length;i++){
         let child = target.children[i];
-        //check if child has attribute content 
+        if(child.hasAttribute('case')){
+            let condition = child.getAttribute('case');
+            let result = get_evaluation_result(condition);
+            if(result){
+                child.style.display = 'block';
+            }
+            if(!result){
+                child.style.display = 'none';
+                continue;
+            }
+            
+        }        
+        
         if(child.hasAttribute('content')){
             let text = child.getAttribute('content');
             let result = get_evaluation_result(text);
