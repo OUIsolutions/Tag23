@@ -104,7 +104,17 @@ function run_loop(target){
             
             //sort elements by index
             elements.sort((a,b)=>a.index-b.index);
-            
+            let its_all_correct = true;
+            for(let j=0;j<elements.length;j++){
+                if(elements[j].order != j){
+                    its_all_correct = false;
+                    break;
+                }
+            }
+            if(its_all_correct){
+                continue;
+            }
+
 
             let fragment = document.createDocumentFragment();
             for(let j=0;j<elements.length;j++){
