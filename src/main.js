@@ -1,13 +1,15 @@
 
 
 function get_evaluation_result(text){
-    function callback(){
-        return eval(text);
-    }
+    let callback = ()=>eval(text);
 
     try{
-        return callback();
+        while (callback instanceof Function){
+            callback = callback();
+        }
+        return callback;
 
+        
     }catch(e){
         console.log(e);
     }
