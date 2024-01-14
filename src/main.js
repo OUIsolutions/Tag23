@@ -77,7 +77,6 @@ function run_loop(target){
                 
                 });
             }
-            let fragment = document.createDocumentFragment();
             for(let j=0;j<rendered_itens.length;j++){
                 //verify if j its not present on elements
                 let found = false;
@@ -96,11 +95,14 @@ function run_loop(target){
                 //remove attribute for 
                 current.removeAttribute('for');
                 current.setAttribute('index',j);
-                fragment.appendChild(current);            
+                elements.push({
+                    index:j,
+                    element:current
+                });
             }
 
-
-            target.insertBefore(fragment,child.nextSibling);
+            //sort elements by index
+            elements.sort((a,b)=>a.index-b.index);
             console.log(elements);
 
             continue;
