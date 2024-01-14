@@ -1,6 +1,17 @@
 
 
+function get_evaluation_result(text){
+    function callback(){
+        return eval(text);
+    }
 
+    try{
+        return callback();
+
+    }catch(e){
+        console.log(e);
+    }
+}
 
 function run_loop(target){
 
@@ -8,7 +19,13 @@ function run_loop(target){
 
     for(let i=0;i<target.children.length;i++){
         let child = target.children[i];
-        console.log(child);
+        //check if child has attribute content 
+        if(child.hasAttribute('content')){
+            let text = child.getAttribute('content');
+            let result = get_evaluation_result(text);
+            child.innerHTML = result;
+        }
+        
         run_loop(child);
     }
 
