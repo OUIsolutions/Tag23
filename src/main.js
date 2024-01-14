@@ -38,12 +38,14 @@ function run_loop(target){
                 continue;
             }
 
-        }        
+        }   
+
         if(child.hasAttribute('create_var')) {
             let varname = child.getAttribute('create_var');
             let code = `${varname} = child.value;`
              eval(code);
         }
+        
         if(child.hasAttribute('content')){
             let text = child.getAttribute('content');
             let result = get_evaluation_result(text);
@@ -144,7 +146,7 @@ function start(){
     
     setInterval(function(){
         run_loop(document.body);
-    },2000);
+    },100);
 }
 
 window.addEventListener('load',start);
