@@ -70,11 +70,11 @@ function run_loop(target){
                 if(!current.hasAttribute('index')){
                     break;
                 }
+                target.removeChild(current);
                 elements.push({
                     index:current.getAttribute('index'),
                     order:j,
                     element:current
-                
                 });
             }
             for(let j=0;j<rendered_itens.length;j++){
@@ -103,7 +103,12 @@ function run_loop(target){
 
             //sort elements by index
             elements.sort((a,b)=>a.index-b.index);
-            console.log(elements);
+
+            let fragment = document.createDocumentFragment();
+            for(let j=0;j<elements.length;j++){
+                fragment.appendChild(elements[j].element);
+            }
+            target.insertBefore(fragment,child.nextSibling);
 
             continue;
         }
