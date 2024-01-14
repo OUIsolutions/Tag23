@@ -24,6 +24,7 @@ function run_loop(target){
         if(child.hasAttribute('case')){
             let condition = child.getAttribute('case');
             let result = get_evaluation_result(condition);
+            
             if(result){
                 child.style.display = 'block';
             }
@@ -31,7 +32,7 @@ function run_loop(target){
                 child.style.display = 'none';
                 continue;
             }
-            
+
         }        
         
         if(child.hasAttribute('content')){

@@ -7,9 +7,12 @@
     <script defer src="src/main.js"></script>
 </head>
 <body>
-    <script> let a = 20</script>
+    <script> let a = 0</script>
+    <button onclick="a-=1"> Decrement a</button>
     <button onclick="a+=1"> Increment a</button>
-    <h1>the value of a is <text content="a"/> </h1>
+
+    <h1 case="a < 0" style="color: red;">the value of a is <text content="a"/> </h1>
+    <h1 case="a >= 0" style="color: blue;" >the value of a is <text content="a"/> </h1>
 
     
 
