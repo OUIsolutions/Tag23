@@ -61,8 +61,8 @@ function run_loop(target){
 
 
             for(j = 0;j<target.children.length;j++){
-                
-                let current = target.children[j+i+1];
+                let point = j+i+1;
+                let current = target.children[point];
                 if(!current){
                     break;
                 }
@@ -70,13 +70,14 @@ function run_loop(target){
                 if(!current.hasAttribute('index')){
                     break;
                 }
-                target.removeChild(current);
                 elements.push({
                     index:current.getAttribute('index'),
                     order:j,
                     element:current
                 });
+
             }
+
             for(let j=0;j<rendered_itens.length;j++){
                 //verify if j its not present on elements
                 let found = false;
@@ -100,13 +101,21 @@ function run_loop(target){
                     element:current
                 });
             }
-
+            
             //sort elements by index
             elements.sort((a,b)=>a.index-b.index);
+            
 
             let fragment = document.createDocumentFragment();
             for(let j=0;j<elements.length;j++){
-                fragment.appendChild(elements[j].element);
+                //verify if j its not present on elements
+                let current = elements[j];
+
+                if(current.element.parentNode === target){
+                     let removed = target.removeChild(current.element);
+                     current.element = removed;
+                }
+                fragment.appendChild(current.element);
             }
             target.insertBefore(fragment,child.nextSibling);
 
