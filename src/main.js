@@ -53,31 +53,36 @@ function run_loop(target){
         if(child.hasAttribute('for')){
             child.style.display = 'none';
             let varname = child.getAttribute('for');
-            let itens =   child.getAttribute('in');
-            let rendered_itens = get_evaluation_result(itens);
+            let itens_var =   child.getAttribute('in');
+            let rendered_itens = get_evaluation_result(itens_var);
             //iterated over the brothers of child
-            let ordered = [];
-            let j = 0;
-            for(;j<target.children.length;j++){
-                let current = target.children[i+1+j];
+            
+            let elements = [];
+
+
+            for(j = 0;j<target.children.length;j++){
+                
+                let current = target.children[j+i+1];
                 if(!current){
                     break;
                 }
+
                 if(!current.hasAttribute('index')){
                     break;
                 }
-                let index = current.getAttribute('index');
-                ordered.push({index:parseInt(index), order:j, element:current});
+                elements.push({
+                    index:current.getAttribute('index'),
+                    order:j,
+                    element:current
+                
+                });
             }
-        
-
-            //iterate over the itens and insert the elements that 
+            let fragment = document.createDocumentFragment();
             for(let j=0;j<rendered_itens.length;j++){
-            
-                //verify if there is an index with the same value as j
+                //verify if j its not present on elements
                 let found = false;
-                for(let k=0;k<ordered.length;k++){
-                    if(ordered[k].index === j){
+                for(let k=0;k<elements.length;k++){
+                    if(elements[k].index == j){
                         found = true;
                         break;
                     }
@@ -85,50 +90,30 @@ function run_loop(target){
                 if(found){
                     continue;
                 }
-                let element = child.cloneNode(true);
-                ordered.push({index:j,element:element});
-            }
-          
-            //iterate over ordered and removes any index that its higher than the length of the array
-            let new_ordered = [];
-            for(let j=0;j<ordered.length;j++){
-                if(ordered[j].index < rendered_itens.length){
-                    new_ordered.push(ordered[j]);
-                }
-                if(ordered[j].index >= rendered_itens.length){
-                    ordered[j].element.remove();
-                }
-            }
-            //sort the array by index
-            new_ordered.sort((a,b)=>a.index-b.index);
-            //insert the 0 index element after the child
-            let first = new_ordered[0];
-            
-            if(!first){
-                continue;
-            }
-            let last_element = first.element;
-
-            if(first.order !== first.index){
-                target.insertBefore(first.element,child.nextSibling);
+                
+                let current = child.cloneNode(true);
+                current.style.display = 'block';
+                //remove attribute for 
+                current.removeAttribute('for');
+                current.setAttribute('index',j);
+                fragment.appendChild(current);            
             }
 
-            for(let j=1;j<new_ordered.length;j++){
-                let current = new_ordered[j];
-                if(current.order !== current.index){
-                    target.removeChild(current.element);
-                    target.insertBefore(current.element,last_element.nextSibling);
-                }
-                last_element = current.element;
-            }
-        
+
+            target.insertBefore(fragment,child.nextSibling);
+            console.log(elements);
+
+            continue;
         }
+  
         run_loop(child);
     }
 
 }
 function start(){
-
+    
+    
+    
     run_loop(document.body);
     
     setInterval(function(){
