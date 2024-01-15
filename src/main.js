@@ -2,7 +2,7 @@
 
 /**
  * @typedef {Object} Tag23LoopProps
- * @property {Element} current_element
+ * @property {Element || HTMLInputElement} current_element
  * @property {number} index
  * @property {boolean} skip
  * */
@@ -18,7 +18,7 @@ function tag23_execute_main_loop_actions(loop_props){
     let current_element = loop_props.current_element;
 
     if(current_element.hasAttribute(TAG_23_START)){
-       tag23_start_tag(current_element);
+       tag23_start(current_element);
     }
 
     if(current_element.hasAttribute(TAG_23_CASE)){
@@ -29,6 +29,10 @@ function tag23_execute_main_loop_actions(loop_props){
     if(current_element.hasAttribute(TAG_23_UNLESS)){
         tag23_unless(loop_props);
     }
+    if(current_element.hasAttribute(TAG_23_VALUE)){
+        tag23_value(current_element);
+    }
+
 
     if(current_element.hasAttribute(TAG_23_SET_VALUE)) {
         tag23_set_value(current_element);
@@ -79,7 +83,7 @@ function start(){
     
     setInterval(function(){
         run_loop(document.body);
-    },2000);
+    },100);
 }
 
 window.addEventListener('load',start);
