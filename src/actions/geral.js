@@ -12,10 +12,9 @@ function tag23_start(current_element){
  */
 function tag23_value(current_element){
 
-
-
-
-
+    if(current_element.getAttribute(TAG_23_SET_VALUE)){
+        return;
+    }
     if(current_element.getAttribute(TAG_23_EVALUATED)){
         return;
     }
@@ -26,19 +25,36 @@ function tag23_value(current_element){
 
 }
 
-/**@param {HTMLElement} current_element
+/**@param {HTMLInputElement} current_element
  */
 function tag23_set_value(current_element){
+
     let name_of_var = current_element.getAttribute(TAG_23_SET_VALUE);
-    let code = `${name_of_var} = current_element.value;`
-    eval(code);
+
+    if(document.activeElement === current_element){
+        eval(`${name_of_var} = current_element.value`);
+    }
+
+    if(document.activeElement !== current_element){
+
+        try {
+            let value = tag23get_evaluation_result(name_of_var);
+            if(value !== undefined || value !== null){
+                current_element.value = value;
+            }
+        }catch (error){}
+
+    }
+
+
 }
 
 
 /**@param {HTMLElement} current_element
  */
 function tag23_content(current_element){
-    let text = current_element.getAttribute(TAG_23_CONTENT);
+    let text = current_element.getAttribute(TAG_23_PUT);
     current_element.innerHTML = tag23get_evaluation_result(text);
+
 }
 

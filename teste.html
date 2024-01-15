@@ -15,8 +15,8 @@
     <div style="display: none" start>
 
     <script>
-
-        let a = 0
+        let b = "ssss";
+        let a = 0;
         let names = ["Mateus","Samuel"]
     </script>
 
@@ -25,14 +25,13 @@
     <button onclick="a+=1"> Increment a</button>
     <br>
 
-    <input set_value="a" value="a"/>
 
-    <h1 unless="a >= 0" style="color: red;">the value of a is <text content="a"/> </h1>
-    <h1 case="a >= 0" style="color: blue;" >the value of a is <text content="a"/> </h1>
+    <h1 unless="a >= 0" style="color: red;">the value of a is <text put="a"/> </h1>
+    <h1 case="a >= 0" style="color: blue;" >the value of a is <text put="a"/> </h1>
 
 
-     <input for="x" in="names">
-
+    <input set_value="a">
+    <button onclick="alert(b)">mostra</button>
     </div>
 
 </body>
