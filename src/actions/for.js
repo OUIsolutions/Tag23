@@ -35,10 +35,17 @@ function tag23_for(loop_props){
     current.style.display = TAG_23_HIDE;
 
     let value_as = current.getAttribute(TAG_23_FOR);
-    let array_name =   current.getAttribute(TAG_23_IN);
-    if(!array_name){
+    if(!value_as){
+        console.log("for value not provided")
         return;
     }
+
+    let array_name =   current.getAttribute(TAG_23_IN);
+    if(!array_name){
+        console.log("in not provided")
+        return;
+    }
+
 
     let array_value = tag23get_evaluation_result(array_name);
     //iterated over the brothers of child
@@ -63,6 +70,11 @@ function tag23_for(loop_props){
         created.style.display = TAG_23_SHOW;
         //remove attribute for
         created.removeAttribute(TAG_23_FOR);
+
+        set_value_recursively_in_element(created,value_as,()=>{
+            return array_value[j];
+        })
+
 
         created.setAttribute(TAG_23_INDEX,j);
         elements.push({
