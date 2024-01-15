@@ -7,9 +7,9 @@ function tag23_get_old_elements(father,index,iterator){
         if(!current){
             break;
         }
-        
+
         if(!current.hasAttribute(TAG_23_INDEX)){
-            let name = current.getAttribute(TAG_23_ITERATOR);
+            let name = current.getAttribute(TAG_23_IN);
             if(name !== iterator){
                 break;
             }
@@ -29,18 +29,24 @@ function tag23_get_old_elements(father,index,iterator){
 
 /**@param {Tag23LoopProps} loop_props
  */
-function tag23_foreach(loop_props){
+function tag23_for(loop_props){
     loop_props.skip = true;
     let current = loop_props.current_element;
     current.style.display = TAG_23_HIDE;
-    let tens_of_var =   current.getAttribute(TAG_23_FOREACH);
-    let rendered_tens = tag23get_evaluation_result(tens_of_var);
+
+    let value_as = current.getAttribute(TAG_23_FOR);
+    let array_name =   current.getAttribute(TAG_23_IN);
+    if(!array_name){
+        return;
+    }
+
+    let array_value = tag23get_evaluation_result(array_name);
     //iterated over the brothers of child
     let father = current.parentNode;
-    let elements = tag23_get_old_elements(father,loop_props.index,tens_of_var);
+    let elements = tag23_get_old_elements(father,loop_props.index,array_name);
 
 
-    for(let j=0;j<rendered_tens.length;j++){
+    for(let j=0;j<array_value.length;j++){
         //verify if j its not present on elements
         let found = false;
         for(let k=0;k<elements.length;k++){
@@ -56,9 +62,8 @@ function tag23_foreach(loop_props){
         let created = current.cloneNode(true);
         created.style.display = TAG_23_SHOW;
         //remove attribute for
-        created.removeAttribute(TAG_23_FOREACH);
+        created.removeAttribute(TAG_23_FOR);
 
-        created.setAttribute(TAG_23_ITERATOR,tens_of_var);
         created.setAttribute(TAG_23_INDEX,j);
         elements.push({
             index:j,

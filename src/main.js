@@ -24,7 +24,7 @@ function tag23_execute_main_loop_actions(loop_props){
         [TAG_23_DEFAULT_VALUE]:()=> tag23_value(current_element),
         [TAG_23_SET_VALUE]:()=> tag23_set_value(current_element),
         [TAG_23_PRINT]:()=> tag23_print(current_element),
-        [TAG_23_FOREACH]:()=> tag23_foreach(loop_props)
+        [TAG_23_FOR]:()=> tag23_for(loop_props)
     }
 
     for(let attribute in callbacks){
