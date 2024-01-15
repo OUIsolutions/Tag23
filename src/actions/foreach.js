@@ -29,8 +29,7 @@ function tag23_for(loop_props){
     loop_props.skip = true;
     let current = loop_props.current_element;
     current.style.display = TAG_23_HIDE;
-    let name_of_var = current.getAttribute(TAG_23_FOR);
-    let tens_of_var =   current.getAttribute(TAG_23_IN);
+    let tens_of_var =   current.getAttribute(TAG_23_FOREACH);
     let rendered_tens = tag23get_evaluation_result(tens_of_var);
     //iterated over the brothers of child
     let father = current.parentNode;
@@ -54,7 +53,6 @@ function tag23_for(loop_props){
         created.style.display = TAG_23_SHOW;
         //remove attribute for
         created.removeAttribute('for');
-        created.setAttribute(TAG_23_EVALUATE_ITERATOR,name_of_var);
         created.setAttribute('index',j);
         elements.push({
             index:j,
