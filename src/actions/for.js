@@ -39,13 +39,13 @@ function tag23_for(loop_props){
         console.log("for value not provided")
         return;
     }
+    let index_name = value_as + TAG_23_INDEX;
 
     let array_name =   current.getAttribute(TAG_23_IN);
     if(!array_name){
         console.log("in not provided")
         return;
     }
-
 
     let array_value = tag23get_evaluation_result(array_name);
     //iterated over the brothers of child
@@ -75,7 +75,11 @@ function tag23_for(loop_props){
             return array_value[j];
         })
 
+        set_value_recursively_in_element(created,index_name,()=>{
+            return j;
+        })
 
+        
         created.setAttribute(TAG_23_INDEX,j);
         elements.push({
             index:j,
