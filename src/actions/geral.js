@@ -65,8 +65,8 @@ function tag23_set_value(current_element){
 
 /**@param {HTMLElement} current_element
  */
-function tag23_content(current_element){
-    let text = current_element.getAttribute(TAG_23_PUT);
+function tag23_print(current_element){
+    let text = current_element.getAttribute(TAG_23_PRINT);
     current_element.innerHTML = tag23get_evaluation_result(text);
 
 }
