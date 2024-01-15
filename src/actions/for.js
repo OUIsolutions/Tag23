@@ -54,6 +54,7 @@ function tag23_for(loop_props){
         created.style.display = TAG_23_SHOW;
         //remove attribute for
         created.removeAttribute('for');
+        created.setAttribute(TAG_23_EVALUATE_ITERATOR,name_of_var);
         created.setAttribute('index',j);
         elements.push({
             index:j,
@@ -92,3 +93,5 @@ function tag23_for(loop_props){
 
 
 }
+
+

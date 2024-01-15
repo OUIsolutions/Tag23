@@ -18,6 +18,7 @@ function tag23_execute_main_loop_actions(loop_props){
     let current_element = loop_props.current_element;
 
     let callbacks = {
+        [TAG_23_EVALUATE_ITERATOR]:()=>tag23evaluate_iterator(current_element),
         [TAG_23_START]:()=> tag23_start(current_element),
         [TAG_23_CASE]:()=> tag23_case(loop_props),
         [TAG_23_UNLESS]:()=> tag23_unless(loop_props),
@@ -79,8 +80,9 @@ function start(){
 
     try{
         //maybe the user can define it
-        time = TAG_23_TICk_TIME
-
+        if(TAG_23_TICk_TIME){
+            time = Number(TAG_23_TICk_TIME);
+        }
     }catch (error){}
         setInterval(function(){
         run_loop(document.body);

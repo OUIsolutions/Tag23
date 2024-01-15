@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        TAG_23_TICk_TIME = undefined;
     </script>
     <script defer src="src/constants.js"></script>
     <script defer src="src/extra.js"></script>
     <script defer src="src/actions/geral.js"></script>
     <script defer src="src/actions/conditions.js"></script>
+    <script defer src="src/actions/iterator_evaluation.js"></script>
+
     <script defer src="src/actions/for.js"></script>
+
     <script defer src="src/main.js"></script>
 </head>
 <body>
@@ -36,6 +40,10 @@
     </div>
 
     <button onclick="alert(b)">mostra</button>
+    <div for="x" in="names">
+        <input default_value="x">
+    </div>
+    <button onclick="names.push('')">Adicionar</button>
     </div>
 
 </body>
