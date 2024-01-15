@@ -11,14 +11,18 @@ function tag23_start(current_element){
 /**@param {HTMLElement || HTMLInputElement} current_element
  */
 function tag23_value(current_element){
+
+
+
+
+
     if(current_element.getAttribute(TAG_23_EVALUATED)){
         return;
     }
 
-
     let tag_data = current_element.getAttribute(TAG_23_VALUE);
     current_element.value = tag23get_evaluation_result(tag_data);
-    current_element.setAttribute(TAG_23_EVALUATED,true);
+    current_element.setAttribute(TAG_23_EVALUATED,'true');
 
 }
 
