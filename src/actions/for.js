@@ -75,11 +75,9 @@ function tag23_for(loop_props){
             return array_value[j];
         })
 
-
         set_value_recursively_in_element(created,index_name,()=>{
             return j;
         })
-
 
         set_value_recursively_in_element(created,destroy_name,()=>{
             array_value.splice(j,1);
