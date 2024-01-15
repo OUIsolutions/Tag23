@@ -32,14 +32,27 @@ function tag23_set_value(current_element){
     let name_of_var = current_element.getAttribute(TAG_23_SET_VALUE);
 
     if(document.activeElement === current_element){
-        eval(`${name_of_var} = current_element.value`);
+        let var_type = undefined;
+        try{
+            //the variable cannot exist
+            eval(`var_type =${name_of_var}.constructor.name`);
+        }catch (error){}
+        if(var_type === 'Number'){
+            eval(`${name_of_var} = Number(current_element.value)`);
+        }
+
+        if(var_type !== 'Number'){
+            eval(`${name_of_var} = current_element.value`);
+        }
+
     }
 
     if(document.activeElement !== current_element){
 
         try {
+            //the variable cannot exist
             let value = tag23get_evaluation_result(name_of_var);
-            if(value !== undefined || value !== null){
+            if(value !== undefined && value !== null){
                 current_element.value = value;
             }
         }catch (error){}
