@@ -25,7 +25,7 @@ function tag23_get_old_elements(father,index){
 
 /**@param {Tag23LoopProps} loop_props
  */
-function tag23_for(loop_props){
+function tag23_foreach(loop_props){
     loop_props.skip = true;
     let current = loop_props.current_element;
     current.style.display = TAG_23_HIDE;
@@ -52,8 +52,9 @@ function tag23_for(loop_props){
         let created = current.cloneNode(true);
         created.style.display = TAG_23_SHOW;
         //remove attribute for
-        created.removeAttribute('for');
-        created.setAttribute('index',j);
+        created.removeAttribute(TAG_23_FOREACH);
+
+        created.setAttribute(TAG_23_INDEX,j);
         elements.push({
             index:j,
             element:created
