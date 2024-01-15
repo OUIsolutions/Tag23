@@ -1,4 +1,25 @@
 
+function tag23_get_old_elements(father,index){
+    let elements = [];
+    for(let i = 0;i< father.children.length;i++){
+        let point = i+index+1;
+        let current = father.children[point];
+        if(!current){
+            break;
+        }
+
+        if(!current.hasAttribute(TAG_23_INDEX)){
+            break;
+        }
+
+        elements.push({
+            index: parseInt(current.getAttribute(TAG_23_INDEX)),
+            order:i,
+            element:current
+        });
+    }
+    return elements;
+}
 
 /**@param {HTMLElement} child
  * @param {number} index
@@ -10,27 +31,8 @@ function tag23_for(child,index){
     let tens_of_var =   child.getAttribute(TAG_23_IN);
     let rendered_tens = tag23get_evaluation_result(tens_of_var);
     //iterated over the brothers of child
-
-    let elements = [];
     let father = child.parentNode;
-
-    for(let j = 0;j< father.children.length;j++){
-        let point = j+index+1;
-        let current = father.children[point];
-        if(!current){
-            break;
-        }
-
-        if(!current.hasAttribute('index')){
-            break;
-        }
-        elements.push({
-            index:current.getAttribute('index'),
-            order:j,
-            element:current
-        });
-
-    }
+    let elements = tag23_get_old_elements(father,index);
 
     for(let j=0;j<rendered_tens.length;j++){
         //verify if j its not present on elements
@@ -81,7 +83,7 @@ function tag23_for(child,index){
 
         fragment.appendChild(current.element);
     }
-    parent.insertBefore(fragment,child.nextSibling);
+    father.insertBefore(fragment,child.nextSibling);
 
 
     return  TAG_23_SKIP_CHILD;

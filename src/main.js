@@ -59,7 +59,7 @@ function start(){
     
     setInterval(function(){
         run_loop(document.body);
-    },100);
+    },2000);
 }
 
 window.addEventListener('load',start);
