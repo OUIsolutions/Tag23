@@ -17,34 +17,28 @@ function tag23_execute_main_loop_actions(loop_props){
 
     let current_element = loop_props.current_element;
 
-    if(current_element.hasAttribute(TAG_23_START)){
-       tag23_start(current_element);
+    let callbacks = {
+        [TAG_23_START]:()=> tag23_start(current_element),
+        [TAG_23_CASE]:()=> tag23_case(loop_props),
+        [TAG_23_UNLESS]:()=> tag23_unless(loop_props),
+        [TAG_23_DEFAULT_VALUE]:()=> tag23_value(current_element),
+        [TAG_23_SET_VALUE]:()=> tag23_set_value(current_element),
+        [TAG_23_PUT]:()=> tag23_content(current_element),
+        [TAG_23_FOR]:()=> tag23_for(loop_props)
+
     }
 
-    if(current_element.hasAttribute(TAG_23_CASE)){
-       tag23_case(loop_props);
-    }
+    for(let attribute in callbacks){
+        if(current_element.hasAttribute(attribute)){
 
+            try{
+                callbacks[attribute]();
+            }
 
-    if(current_element.hasAttribute(TAG_23_UNLESS)){
-        tag23_unless(loop_props);
-    }
-    if(current_element.hasAttribute(TAG_23_VALUE)){
-        tag23_value(current_element);
-    }
-
-
-    if(current_element.hasAttribute(TAG_23_SET_VALUE)) {
-        tag23_set_value(current_element);
-    }
-
-    if(current_element.hasAttribute(TAG_23_PUT)){
-        tag23_content(current_element);
-    }
-
-
-    if(current_element.hasAttribute(TAG_23_FOR)){
-        tag23_for(loop_props);
+            catch (error){
+                console.error(error);
+            }
+        }
     }
 
 
@@ -79,11 +73,18 @@ function run_loop(target){
 function start(){
     
 
+
     run_loop(document);
-    
-    setInterval(function(){
+    let time = TAG_23_TICK_DEFAULT_TIME;
+
+    try{
+        //maybe the user can define it
+        time = TAG_23_TICk_TIME
+
+    }catch (error){}
+        setInterval(function(){
         run_loop(document.body);
-    },100);
+    },time);
 }
 
 window.addEventListener('load',start);

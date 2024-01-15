@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+    </script>
     <script defer src="src/constants.js"></script>
     <script defer src="src/extra.js"></script>
     <script defer src="src/actions/geral.js"></script>
@@ -29,8 +31,10 @@
     <h1 unless="a >= 0" style="color: red;">the value of a is <text put="a"/> </h1>
     <h1 case="a >= 0" style="color: blue;" >the value of a is <text put="a"/> </h1>
 
+    <div case="a >10">
+        <input  set_value="a" type="number">
+    </div>
 
-    <input set_value="a" type="number">
     <button onclick="alert(b)">mostra</button>
     </div>
 
