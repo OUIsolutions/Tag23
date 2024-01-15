@@ -59,7 +59,6 @@ function run_loop(target){
             index:i,
             skip:false
         }
-
         tag23_execute_main_loop_actions(loop_props);
         i = loop_props.index;
         
