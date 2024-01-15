@@ -1,53 +1,71 @@
 
 
+/**
+ * @typedef {Object} Tag23LoopProps
+ * @property {Element} current_element
+ * @property {number} index
+ * @property {boolean} skip
+ * */
 
-/**@param {HTMLElement} child
- * @param {number} index
- * @return {boolean}
+
+
+
+/**
+ * @param {Tag23LoopProps} loop_props
  */
-function tag23_execute_main_loop_actions(child,index){
-    /**@type {Array<boolean>}*/
-    let execute_child = []
-    if(child.hasAttribute(TAG_23_START)){
-        execute_child.push( tag23_start_tag(child));
+function tag23_execute_main_loop_actions(loop_props){
+
+    let current_element = loop_props.current_element;
+
+    if(current_element.hasAttribute(TAG_23_START)){
+       tag23_start_tag(current_element);
     }
 
-    if(child.hasAttribute(TAG_23_CASE)){
-       execute_child.push(tag23_case(child));
+    if(current_element.hasAttribute(TAG_23_CASE)){
+       tag23_case(loop_props);
     }
 
-    if(child.hasAttribute(TAG_23_UNLESS)){
-        execute_child.push(tag23_unless(child));
+
+    if(current_element.hasAttribute(TAG_23_UNLESS)){
+        tag23_unless(loop_props);
     }
 
-    if(child.hasAttribute(TAG_23_SET_VALUE)) {
-        execute_child.push(tag23_set_value(child));
+    if(current_element.hasAttribute(TAG_23_SET_VALUE)) {
+        tag23_set_value(current_element);
     }
 
-    if(child.hasAttribute(TAG_23_CONTENT)){
-        execute_child.push(tag23_content(child));
+    if(current_element.hasAttribute(TAG_23_CONTENT)){
+        tag23_content(current_element);
     }
 
-    if(child.hasAttribute(TAG_23_FOR)){
-        execute_child.push(tag23_for(child,index));
+
+    if(current_element.hasAttribute(TAG_23_FOR)){
+        tag23_for(loop_props);
     }
-    
-    if(execute_child.includes(TAG_23_SKIP_CHILD)){
-        return  TAG_23_SKIP_CHILD;
-    }
-    return TAG_23_EXECUTE_CHILD;
+
 
 }
+
+/**
+ * @param {HTMLElement || Document} target
+ * */
 function run_loop(target){
 
-    //iterate over all childs 
 
     for(let i=0;i<target.children.length;i++){
-        let child = target.children[i];
-        let execute_child = tag23_execute_main_loop_actions(child,i);
 
-        if(execute_child){
-            run_loop(child);
+        /**@type {Tag23LoopProps}*/
+        let loop_props = {
+            current_element: target.children[i],
+            index:i,
+            skip:false
+        }
+
+        tag23_execute_main_loop_actions(loop_props);
+        i = loop_props.index;
+        
+        if(!loop_props.skip){
+            run_loop(loop_props.current_element);
         }
 
 

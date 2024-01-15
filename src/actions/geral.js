@@ -1,33 +1,27 @@
 
 
 
-/**@param {HTMLElement} child
- * @return {boolean}
+/**@param {HTMLElement} current_element
  */
-function tag23_start_tag(child){
-    child.style.display = TAG_23_SHOW;
-    return TAG_23_EXECUTE_CHILD;
+function tag23_start_tag(current_element){
+    current_element.style.display = TAG_23_SHOW;
 }
 
 
 
-/**@param {HTMLElement} child
- * @return {boolean}
+/**@param {HTMLElement} current_element
  */
-function tag23_set_value(child){
-    let name_of_var = child.getAttribute(TAG_23_SET_VALUE);
-    let code = `${name_of_var} = child.value;`
+function tag23_set_value(current_element){
+    let name_of_var = current_element.getAttribute(TAG_23_SET_VALUE);
+    let code = `${name_of_var} = current_element.value;`
     eval(code);
-    return TAG_23_EXECUTE_CHILD;
 }
 
 
-/**@param {HTMLElement} child
- * @return {boolean}
+/**@param {HTMLElement} current_element
  */
-function tag23_content(child){
-    let text = child.getAttribute(TAG_23_CONTENT);
-    child.innerHTML = tag23get_evaluation_result(text);
-    return TAG_23_EXECUTE_CHILD;
+function tag23_content(current_element){
+    let text = current_element.getAttribute(TAG_23_CONTENT);
+    current_element.innerHTML = tag23get_evaluation_result(text);
 }
 

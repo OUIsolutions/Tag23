@@ -9,5 +9,3 @@ const TAG_23_INDEX = "index";
 const TAG_23_HIDE ="none";
 const  TAG_23_SHOW = 'block';
 
-const TAG_23_EXECUTE_CHILD = true;
-const TAG_23_SKIP_CHILD = false;

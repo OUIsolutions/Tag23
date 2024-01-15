@@ -23,18 +23,18 @@ function tag23_get_old_elements(father,index){
 
 
 
-/**@param {HTMLElement} child
- * @param {number} index
- * @return {boolean}
+/**@param {Tag23LoopProps} loop_props
  */
-function tag23_for(child,index){
-    child.style.display = TAG_23_HIDE;
-    let name_of_var = child.getAttribute(TAG_23_FOR);
-    let tens_of_var =   child.getAttribute(TAG_23_IN);
+function tag23_for(loop_props){
+    loop_props.skip = true;
+    let current = loop_props.current_element;
+    current.style.display = TAG_23_HIDE;
+    let name_of_var = current.getAttribute(TAG_23_FOR);
+    let tens_of_var =   current.getAttribute(TAG_23_IN);
     let rendered_tens = tag23get_evaluation_result(tens_of_var);
     //iterated over the brothers of child
-    let father = child.parentNode;
-    let elements = tag23_get_old_elements(father,index);
+    let father = current.parentNode;
+    let elements = tag23_get_old_elements(father,loop_props.index);
 
 
     for(let j=0;j<rendered_tens.length;j++){
@@ -50,16 +50,17 @@ function tag23_for(child,index){
             continue;
         }
 
-        let current = child.cloneNode(true);
-        current.style.display = TAG_23_SHOW;
+        let created = current.cloneNode(true);
+        created.style.display = TAG_23_SHOW;
         //remove attribute for
-        current.removeAttribute('for');
-        current.setAttribute('index',j);
+        created.removeAttribute('for');
+        created.setAttribute('index',j);
         elements.push({
             index:j,
-            element:current
+            element:created
         });
     }
+
 
     //sort elements by index
     elements.sort((a,b)=>a.index-b.index);
@@ -71,7 +72,7 @@ function tag23_for(child,index){
         }
     }
     if(its_all_correct){
-        return  TAG_23_SKIP_CHILD;
+        return;
     }
 
 
@@ -80,15 +81,14 @@ function tag23_for(child,index){
         //verify if j its not present on elements
         let current = elements[j];
 
-        if(current.element.parentNode === parent){
-            current.element = parent.removeChild(current.element);
+        if(current.element.parentNode === father){
+            current.element = father.removeChild(current.element);
         }
 
         fragment.appendChild(current.element);
     }
-    father.insertBefore(fragment,child.nextSibling);
+    father.insertBefore(fragment,current.nextSibling);
 
 
-    return  TAG_23_SKIP_CHILD;
 
 }
