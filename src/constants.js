@@ -9,6 +9,7 @@ const TAG_23_FOR = "for";
 const  TAG_23_IN = "in";
 
 const TAG_23_INDEX = "index";
+const TAG_23_DESTROY = "destroy";
 const TAG_23_HIDE ="none";
 const  TAG_23_SHOW = 'block';
 
