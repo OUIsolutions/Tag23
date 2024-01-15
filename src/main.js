@@ -38,7 +38,7 @@ function tag23_execute_main_loop_actions(loop_props){
         tag23_set_value(current_element);
     }
 
-    if(current_element.hasAttribute(TAG_23_CONTENT)){
+    if(current_element.hasAttribute(TAG_23_PUT)){
         tag23_content(current_element);
     }
 
