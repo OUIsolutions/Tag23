@@ -1,5 +1,5 @@
 
-function tag23_get_old_elements(father,index){
+function tag23_get_old_elements(father,index,iterator){
     let elements = [];
     for(let i = 0;i< father.children.length;i++){
         let point = i+index+1;
@@ -7,10 +7,14 @@ function tag23_get_old_elements(father,index){
         if(!current){
             break;
         }
-
+        
         if(!current.hasAttribute(TAG_23_INDEX)){
-            break;
+            let name = current.getAttribute(TAG_23_ITERATOR);
+            if(name !== iterator){
+                break;
+            }
         }
+
 
         elements.push({
             index: parseInt(current.getAttribute(TAG_23_INDEX)),
@@ -33,7 +37,7 @@ function tag23_foreach(loop_props){
     let rendered_tens = tag23get_evaluation_result(tens_of_var);
     //iterated over the brothers of child
     let father = current.parentNode;
-    let elements = tag23_get_old_elements(father,loop_props.index);
+    let elements = tag23_get_old_elements(father,loop_props.index,tens_of_var);
 
 
     for(let j=0;j<rendered_tens.length;j++){
@@ -54,6 +58,7 @@ function tag23_foreach(loop_props){
         //remove attribute for
         created.removeAttribute(TAG_23_FOREACH);
 
+        created.setAttribute(TAG_23_ITERATOR,tens_of_var);
         created.setAttribute(TAG_23_INDEX,j);
         elements.push({
             index:j,
