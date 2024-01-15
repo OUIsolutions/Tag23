@@ -21,6 +21,8 @@ function tag23_get_old_elements(father,index){
     return elements;
 }
 
+
+
 /**@param {HTMLElement} child
  * @param {number} index
  * @return {boolean}
@@ -33,6 +35,7 @@ function tag23_for(child,index){
     //iterated over the brothers of child
     let father = child.parentNode;
     let elements = tag23_get_old_elements(father,index);
+
 
     for(let j=0;j<rendered_tens.length;j++){
         //verify if j its not present on elements

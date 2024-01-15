@@ -14,7 +14,7 @@ function tag23_start_tag(child){
 /**@param {HTMLElement} child
  * @return {boolean}
  */
-function set_value(child){
+function tag23_set_value(child){
     let name_of_var = child.getAttribute(TAG_23_SET_VALUE);
     let code = `${name_of_var} = child.value;`
     eval(code);

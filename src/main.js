@@ -1,38 +1,41 @@
 
 
+
 /**@param {HTMLElement} child
  * @param {number} index
  * @return {boolean}
  */
 function tag23_execute_main_loop_actions(child,index){
-
-
+    /**@type {Array<boolean>}*/
+    let execute_child = []
     if(child.hasAttribute(TAG_23_START)){
-       return  tag23_start_tag(child);
+        execute_child.push( tag23_start_tag(child));
     }
 
     if(child.hasAttribute(TAG_23_CASE)){
-       return  tag23_case(child);
+       execute_child.push(tag23_case(child));
     }
 
     if(child.hasAttribute(TAG_23_UNLESS)){
-        return  tag23_unless(child);
+        execute_child.push(tag23_unless(child));
     }
 
-
-
     if(child.hasAttribute(TAG_23_SET_VALUE)) {
-        return  set_value(child);
+        execute_child.push(tag23_set_value(child));
     }
 
     if(child.hasAttribute(TAG_23_CONTENT)){
-       return  tag23_content(child);
+        execute_child.push(tag23_content(child));
     }
 
     if(child.hasAttribute(TAG_23_FOR)){
-        return  tag23_for(child,index);
+        execute_child.push(tag23_for(child,index));
     }
-
+    
+    if(execute_child.includes(TAG_23_SKIP_CHILD)){
+        return  TAG_23_SKIP_CHILD;
+    }
+    return TAG_23_EXECUTE_CHILD;
 
 }
 function run_loop(target){
@@ -53,8 +56,7 @@ function run_loop(target){
 }
 function start(){
     
-    
-    
+
     run_loop(document);
     
     setInterval(function(){
