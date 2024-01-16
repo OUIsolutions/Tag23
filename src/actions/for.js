@@ -56,6 +56,7 @@ function tag23_for(loop_props){
     let elements = tag23_get_old_elements(father,loop_props.index,array_name);
 
 
+
     for(let j=0;j<array_value.length;j++){
         //verify if j its not present on elements
         let found = false;
