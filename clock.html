@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        TAG_23_TICk_TIME = 2000;
+        TAG_23_TICk_TIME = undefined;
     </script>
     <script  src="src/constants.js"></script>
     <script src="src/globals.js"></script>
@@ -17,26 +17,12 @@
     <script src="src/main.js"></script>
 
 </head>
-<body>
-    <script>
-        let last_time = 0;
-        let value = 0;
-    </script>
-
 
     <div style="display: none" start>
 
-        <script>tag23_main_loop(()=>{
-            if(TAG_23_TIME_PASSED - 1000 > last_time){
-                value++;
-                last_time = TAG_23_TIME_PASSED;
-            }
+        <h1 print="TAG_23_TIME_PASSED /  1000"></h1>
 
-        })</script>
-
-
-        <h1 print="value"></h1>
-
+        
     </div>
 
 </body>
