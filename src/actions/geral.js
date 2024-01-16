@@ -61,7 +61,11 @@ function tag23_set_value(current_element){
 
 
 }
-
+/**@param {HTMLElement} current_element
+ */
+function tag_23_loop(current_element){
+    eval(current_element.textContent);
+}
 
 /**@param {HTMLElement} current_element
  */

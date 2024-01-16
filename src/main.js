@@ -18,6 +18,7 @@ function tag23_execute_main_loop_actions(loop_props){
     let current_element = loop_props.current_element;
 
     let callbacks = {
+        [TAG_23_LOOP]:()=>tag_23_loop(current_element),
         [TAG_23_START]:()=> tag23_start(current_element),
         [TAG_23_CASE]:()=> tag23_case(loop_props),
         [TAG_23_UNLESS]:()=> tag23_unless(loop_props),
