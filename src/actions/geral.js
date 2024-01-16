@@ -64,6 +64,8 @@ function tag23_set_value(current_element){
 /**@param {HTMLElement} current_element
  */
 function tag_23_loop(current_element){
+    console.log(current_element.currentScript);
+    current_element.style.display = TAG_23_HIDE;
     eval(current_element.textContent);
 }
 

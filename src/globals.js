@@ -1,0 +1,4 @@
+
+let TAG_23_CURRENT_TICK = 0;
+let TAG_23_TIME_PASSED = 0;
+
