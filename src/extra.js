@@ -1,11 +1,15 @@
 /**
+ * @param {HTMLElement} element
  * @param {function || string } text
  * @return {string  || any}
  * */
-function tag23get_evaluation_result(text){
-    let callback = ()=>eval(text);
+function tag23get_evaluation_result(element,text){
+
+    let callback = function(){return eval(text)};
     while (callback instanceof Function) {
-        callback = callback();
+
+        callback = callback.call(element);
+        
     }
     return callback;
 

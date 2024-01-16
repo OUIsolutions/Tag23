@@ -20,7 +20,7 @@ function tag23_value(current_element){
     }
 
     let tag_data = current_element.getAttribute(TAG_23_DEFAULT_VALUE);
-    current_element.value = tag23get_evaluation_result(tag_data);
+    current_element.value = tag23get_evaluation_result(current_element,tag_data);
     current_element.setAttribute(TAG_23_EVALUATED,'true');
 
 }
@@ -51,7 +51,7 @@ function tag23_set_value(current_element){
 
         try {
             //the variable cannot exist
-            let value = tag23get_evaluation_result(name_of_var);
+            let value = tag23get_evaluation_result(current_element,name_of_var);
             if(value !== undefined && value !== null){
                 current_element.value = value;
             }
@@ -67,7 +67,7 @@ function tag23_set_value(current_element){
  */
 function tag23_print(current_element){
     let text = current_element.getAttribute(TAG_23_PRINT);
-    current_element.innerHTML = tag23get_evaluation_result(text);
+    current_element.innerHTML = tag23get_evaluation_result(current_element,text);
 
 }
 

@@ -47,7 +47,7 @@ function tag23_for(loop_props){
         return;
     }
     /**@type {Array<any>}*/
-    let array_value = tag23get_evaluation_result(array_name);
+    let array_value = tag23get_evaluation_result(current,array_name);
     //iterated over the brothers of child
     let father = current.parentNode;
     let elements = tag23_get_old_elements(father,loop_props.index,array_name);
