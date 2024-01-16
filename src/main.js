@@ -37,12 +37,14 @@ function tag23_execute_internal_main_loop_actions(loop_props){
             }
 
             catch (error){
+                loop_props.skip = true;
+                current_element.style.display = TAG_23_HIDE;
                 console.error(error);
             }
         }
     }
 
-
+    
 }
 
 /**

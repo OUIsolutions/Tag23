@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        TAG_23_TICk_TIME = 2000;
-    </script>
+
+       let globals = {}
+   </script>
     <script defer src="src/constants.js"></script>
     <script defer src="src/globals.js"></script>
+    <script defer src="src/main_loop.js"></script>
+
     <script defer src="src/extra.js"></script>
     <script defer src="src/actions/geral.js"></script>
     <script defer src="src/actions/conditions.js"></script>
@@ -19,7 +22,7 @@
 </head>
 <body>
     <div style="display: none" start>
-
+    
     <script>
         let b = "ssss";
         let a = 0;
@@ -27,32 +30,21 @@
     </script>
 
 
-        <script loop>
-            a+=1;
-        </script>
-
+      
     <button onclick="a-=1"> Decrement a</button>
     <button onclick="a+=1"> Increment a</button>
     <br>
     <h1 unless="a >= 0" style="color: red;">the value of a is <text print="a"/> </h1>
     <h1 case="a >= 0" style="color: blue;" >the value of a is <text print="a"/> </h1>
+    
+    <input set_value="teste">
+    <br>    
 
-    <div case="a >10">
-        <input  set_value="a" type="number">
-    </div>
-
-
-    <div for="a" in="names">
-
-        <h1 print='"o valor é " + this.a() + "e o index é: " + this.a_index()'></h1>
-        <button onclick="this.a_destroy()"> Destroy</button>
-
-        <br>
-
-    </div>
+    <frag case="teste === 'a'">
+        <input set_value="teste2">
+    </frag>
 
 
-    <button onclick="names.push('ddd')">Adicionar</button>
     </div>
 
 </body>
