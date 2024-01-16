@@ -9,6 +9,7 @@
     </script>
     <script  src="src/constants.js"></script>
     <script src="src/globals.js"></script>
+    <script src="src/main_loop.js"></script>
     <script src="src/extra.js"></script>
     <script src="src/actions/geral.js"></script>
     <script src="src/actions/conditions.js"></script>
@@ -21,11 +22,17 @@
         let last_time = 0;
         let value = 0;
     </script>
-    <script src="main_loop.js" eval_loop></script>
+
 
     <div style="display: none" start>
 
+        <script>tag23_main_loop(()=>{
+            if(TAG_23_TIME_PASSED - 1000 > last_time){
+                value++;
+                last_time = TAG_23_TIME_PASSED;
+            }
 
+        })</script>
 
 
         <h1 print="value"></h1>

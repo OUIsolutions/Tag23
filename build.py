@@ -6,7 +6,7 @@ from os import makedirs
 SOURCES = [
     "src/constants.js",
      "src/globals.js",
-
+    "src/main_loop.js"
     "src/extra.js",
     "src/actions/conditions.js",
     "src/actions/for.js",
