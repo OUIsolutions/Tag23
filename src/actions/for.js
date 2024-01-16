@@ -48,6 +48,9 @@ function tag23_for(loop_props){
     }
     /**@type {Array<any>}*/
     let array_value = tag23get_evaluation_result(current,array_name);
+    if(!array_value){
+        return;
+    }
     //iterated over the brothers of child
     let father = current.parentNode;
     let elements = tag23_get_old_elements(father,loop_props.index,array_name);
@@ -92,6 +95,7 @@ function tag23_for(loop_props){
     }
 
 
+
     //sort elements by index
     elements.sort((a,b)=>a.index-b.index);
     let its_all_correct = true;
@@ -101,9 +105,13 @@ function tag23_for(loop_props){
             break;
         }
     }
-    if(its_all_correct){
+
+    if(its_all_correct && elements.length === array_value.length){
         return;
     }
+
+    //console.log(elements);
+    //console.log(array_value);
 
 
     let fragment = document.createDocumentFragment();
@@ -111,11 +119,15 @@ function tag23_for(loop_props){
         //verify if j its not present on elements
         let current = elements[j];
 
+
+
         if(current.element.parentNode === father){
             current.element = father.removeChild(current.element);
         }
+        if(current.index <= array_value.length -1){
+            fragment.appendChild(current.element);
+        }
 
-        fragment.appendChild(current.element);
     }
     father.insertBefore(fragment,current.nextSibling);
 
