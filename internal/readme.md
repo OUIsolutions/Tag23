@@ -28,3 +28,7 @@ Conditions can be determined by the keywords **case** e **unless**
 If you need to add a function to main loop, these it's extremely easy,
 you just need to call the **tag23_main_loop** function, to add an function 
 to run on the main loop
+<h1>NOTE THAT THE MAIN LOOP ITS EXECUTED IT TICK OF OPERATION, THE DEFAULT TICK ITS 40 milliseconds 
+(25 FRAMES PER SECOND)</h1>
+
+

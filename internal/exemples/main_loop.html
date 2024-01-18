@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.6.js"></script>
+</head>
+<body>
+<script>
+    let total_iterations = 0;
+</script>
+<script>tag23_main_loop(()=>{
+
+    total_iterations+=1;
+})</script>
+
+<h1>you are on iteration <span print="total_iterations"></span></h1>
+<h1>its passed  <span print="TAG_23_TIME_PASSED/ 1000"></span> seconds</h1>
+</body>
+</html>

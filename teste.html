@@ -5,36 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-
        let globals = {}
    </script>
-    <script defer src="src/constants.js"></script>
-    <script defer src="src/globals.js"></script>
-    <script defer src="src/main_loop.js"></script>
 
-    <script defer src="src/extra.js"></script>
-    <script defer src="src/actions/geral.js"></script>
-    <script defer src="src/actions/conditions.js"></script>
-
-    <script defer src="src/actions/for.js"></script>
-
-    <script defer src="src/main.js"></script>
+    <script  src="src/constants.js"></script>
+    <script  src="src/globals.js"></script>
+    <script src="src/main_loop.js"></script>
+    <script src="src/extra.js"></script>
+    <script src="src/actions/geral.js"></script>
+    <script src="src/actions/conditions.js"></script>
+    <script src="src/actions/for.js"></script>
+    <script src="src/main.js"></script>
 </head>
 <body>
-
     <script>
-        let a = 0;
+        let total_iterations = 0;
     </script>
+    <script>tag23_main_loop(()=>{
 
-    <button onclick="a-=1"> Decrement a</button>
-    <button onclick="a+=1"> Increment a</button>
-    <br>
-    <h1 unless="a >= 0" style="color: red;">the value of a is <span print="a"/> </h1>
-    <h1 case="a >= 0" style="color: blue;" >the value of a is <span print="a"/> </h1>
+        total_iterations+=1;
+    })</script>
 
-
-
-    </div>
+    <h1>you are on iteration <span print="total_iterations"></span></h1>
+    <h1>its passed  <span print="TAG_23_TIME_PASSED/ 1000"></span> seconds</h1>
 
 </body>
 </html>

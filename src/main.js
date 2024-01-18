@@ -75,20 +75,13 @@ function run_loop(target){
 function start(){
 
     run_loop(document);
-    let time = TAG_23_TICK_DEFAULT_TIME;
 
-    try{
-        //maybe the user can define it
-        if(TAG_23_TICk_TIME){
-            time = Number(TAG_23_TICk_TIME);
-        }
-    }catch (error){}
-        setInterval(function(){
-         TAG_23_CURRENT_TICK++;
-         TAG_23_TIME_PASSED+=time;
+    setInterval(function(){
+         TAG_23_CURRENT_TICK+=1;
+         TAG_23_TIME_PASSED+=TAG_23_TICK_TIME;
 
          run_loop(document.body);
-    },time);
+    },TAG_23_TICK_TIME);
 }
 
 window.addEventListener('load',start);

@@ -7,7 +7,7 @@ For install you just need to add the **script** tag in the head of your browser
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.6.js"></script>
 
 ```
 
@@ -23,7 +23,7 @@ to show the value based on colors
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.6.js"></script>
 </head>
 <body>
 <script>let a = 0</script>
@@ -48,7 +48,7 @@ For printing values you just need to add the properties **print** to any tag you
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.6.js"></script>
 </head>
 <body>
     <script>
@@ -95,7 +95,7 @@ Conditions can be determined by the keywords **case** e **unless**
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.6.js"></script>
 </head>
 <body>
     <script>
@@ -151,3 +151,7 @@ Conditions can be determined by the keywords **case** e **unless**
 If you need to add a function to main loop, these it's extremely easy,
 you just need to call the **tag23_main_loop** function, to add an function 
 to run on the main loop
+<h1>NOTE THAT THE MAIN LOOP ITS EXECUTED IT TICK OF OPERATION, THE DEFAULT TICK ITS 40 milliseconds 
+(25 FRAMES PER SECOND)</h1>
+
+
