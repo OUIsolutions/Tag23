@@ -310,8 +310,11 @@ function tag23_set_value(current_element){
  */
 function tag23_print(current_element){
     let text = current_element.getAttribute(TAG_23_PRINT);
-    current_element.innerHTML = tag23get_evaluation_result(current_element,text);
 
+    let evaluation = tag23get_evaluation_result(current_element,text);
+    if(evaluation){
+        current_element.innerHTML = evaluation;
+    }
 }
 
 

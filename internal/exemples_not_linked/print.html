@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script #lib#></script>
+</head>
+<body>
+    <script>
+        let data = {};
+    </script>
+    <h3>Name</h3>
+
+    <input onkeyup="data.name = this.value">
+    <h3>Age</h3>
+
+    <input onkeyup="data.age = this.value">
+
+    <h3>Profession</h3>
+    <input onkeyup="data.profession = this.value">
+
+    <br>
+
+    <p> Your name is <span print="data.name"></span>
+        you are <span print="data.age"></span> years old
+        and you work as an <span print="data.profession"></span>
+    </p>
+</body>
+</html>
