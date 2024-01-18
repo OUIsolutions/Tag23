@@ -35,7 +35,7 @@ function tag23_execute_users_main_loop(callback){
         try{
             callback();
         }catch (error){
-            console.log(error);
+            tag23_show_error_message(error);
         }
     })
 }
@@ -316,6 +316,7 @@ function tag23_print(current_element){
         current_element.innerHTML = evaluation;
     }
 }
+
 
 
 

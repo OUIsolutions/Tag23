@@ -12,7 +12,7 @@ function tag23_execute_users_main_loop(callback){
         try{
             callback();
         }catch (error){
-            console.log(error);
+            tag23_show_error_message(error);
         }
     })
 }

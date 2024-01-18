@@ -21,12 +21,19 @@
     <h3>Profession</h3>
     <input onchange="data.profession = this.value" placeholder="profession">
 
+    <h3>Gender</h3>
+    <select onchange="data.gender = this.value">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
 
     <br>
 
     <p> Your name is <span print="data.name"></span>
-        you are <span print="data.age"></span> years old
-        and you work as an <span print="data.profession"></span>
+        you are <span print="data.age"></span> years old,
+        you work as an <span print="data.profession"></span>
+        and you are a <span print="data.gender"></span>
     </p>
 </body>
 </html>

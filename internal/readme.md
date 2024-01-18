@@ -23,3 +23,8 @@ For printing values you just need to add the properties **print** to any tag you
 Conditions can be determined by the keywords **case** e **unless** 
 
 #page_ref:conditions.html
+
+## Main Loop
+If you need to add a function to main loop, these it's extremely easy,
+you just need to call the **tag23_main_loop** function, to add an function 
+to run on the main loop
