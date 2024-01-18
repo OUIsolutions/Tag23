@@ -15,3 +15,10 @@ to show the value based on colors
 
 ## Printing Values 
 For printing values you just need to add the properties **print** to any tag you want 
+
+#page_ref:print.html
+
+## Conditions 
+
+Conditions can be determined by the keywords **case** e **unless** 
+

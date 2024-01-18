@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+</head>
+<body>
+    <script>
+        let data = {};
+    </script>
+    <h3>Name</h3>
+    <input  onchange="data.name = this.value" placeholder="name">
+
+    <h3>Email</h3>
+    <input  onchange="data.email = this.value" placeholder="email">
+
+
+    <h3>Password</h3>
+    <input  onchange="data.password = this.value" placeholder="password">
+
+
+    <h3>Repeat Password</h3>
+    <input  onchange="data.repeat_password = this.value" placeholder="repeat password">
+
+    <br>
+
+    <h3 unless="data.repeat_password == data.password "
+        style="color: red"
+    >Passwords must be equal
+    </h3>
+
+    <br>
+    <script>
+        function its_all_correct(){
+            if(!data.name){
+                return false;
+            }
+            if(!data.email){
+                return  false;
+            }
+            if(!data.password){
+                return  false;
+            }
+            if(data.password  !== data.repeat_password){
+                return  false;
+            }
+            return  true;
+        }
+    </script>
+    <button case="its_all_correct()"> Subscribe</button>
+
+
+</body>
+</html>
