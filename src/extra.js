@@ -28,3 +28,15 @@ function set_value_recursively_in_element(target,name,value){
     }
 
 }
+
+/**@param {Error} error*/
+function  tag23_show_error_message(error){
+    let formatted = String(error);
+
+
+    if(TAG_23_SHOWED_MESSAGES.includes(formatted)){
+       return;
+    }
+    TAG_23_SHOWED_MESSAGES.push(String(formatted));
+    console.log(error);
+}
