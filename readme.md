@@ -2,8 +2,20 @@
 Tag23 it's a library for coding inside html, it allows defining conditions, loops and 
 easy evaluations of values
 
+## Install 
+For install you just need to add the **script** tag in the head of your browser
+
+```html
+
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.4.js"></script>
+
+```
+
+
+## Basic Example
 In these example we are creating an counter, that uses the **case** and **unless** keywords
 to show the value based on colors
+
 [Runable exemple](https://ouisolutions.github.io/OUIsolutions/Tag23/internal/exemples/counter.html)
 ```html
 <!DOCTYPE html>
