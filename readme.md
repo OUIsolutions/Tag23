@@ -11,7 +11,10 @@ For install you just need to add the **script** tag in the head of your browser
 
 ```
 
+## Source 
+The source can be found on the fowllowing link 
 
+[Source](https://github.com/OUIsolutions/Tag23?tab=readme-ov-file)
 ## Basic Example
 In these example we are creating an counter, that uses the **case** and **unless** keywords
 to show the value based on colors
