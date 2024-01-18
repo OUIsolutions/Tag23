@@ -7,7 +7,7 @@ For install you just need to add the **script** tag in the head of your browser
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.4.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
 
 ```
 
@@ -23,7 +23,7 @@ to show the value based on colors
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
 </head>
 <body>
 
