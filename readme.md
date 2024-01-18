@@ -26,7 +26,7 @@ to show the value based on colors
     <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
 </head>
 <body>
-
+<script>let a = 0</script>
 <button onclick="a-=1"> Decrement a</button>
 <button onclick="a+=1"> Increment a</button>
 <br>
