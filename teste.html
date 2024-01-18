@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+
+       let globals = {}
    </script>
     <script defer src="src/constants.js"></script>
     <script defer src="src/globals.js"></script>
@@ -19,13 +21,18 @@
     <script defer src="src/main.js"></script>
 </head>
 <body>
-    <div style="display: none" start>
-    
+
     <script>
-       let test  = 'dddda'
+        let a = 0;
     </script>
 
-        <input default_value='test' onchange="test = this.value">
+    <button onclick="a-=1"> Decrement a</button>
+    <button onclick="a+=1"> Increment a</button>
+    <br>
+    <h1 unless="a >= 0" style="color: red;">the value of a is <span print="a"/> </h1>
+    <h1 case="a >= 0" style="color: blue;" >the value of a is <span print="a"/> </h1>
+
+
 
     </div>
 
