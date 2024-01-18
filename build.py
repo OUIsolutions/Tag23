@@ -37,7 +37,7 @@ def create_output():
 
 output_name = create_output()
 #replacing html links 
-link = f'https://cdn.jsdelivr.net/gh/{REPO_NAME}@main/{output_name}'
+link = f'https://cdn.jsdelivr.net/gh/OUIsolutions/{REPO_NAME}@main/{output_name}'
 div = f'src="{link}"'
 
 
