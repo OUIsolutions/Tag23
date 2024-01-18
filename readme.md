@@ -7,7 +7,7 @@ For install you just need to add the **script** tag in the head of your browser
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Tag23@main/versions/Tag23_v0.1.5.js"></script>
 
 ```
 
@@ -16,14 +16,14 @@ For install you just need to add the **script** tag in the head of your browser
 In these example we are creating an counter, that uses the **case** and **unless** keywords
 to show the value based on colors
 
-[Runable exemple](https://ouisolutions.github.io/OUIsolutions/Tag23/internal/exemples/counter.html)
+[Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/counter.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Tag23@main/versions/Tag23_v0.1.5.js"></script>
 </head>
 <body>
 
@@ -41,14 +41,14 @@ to show the value based on colors
 ## Printing Values 
 For printing values you just need to add the properties **print** to any tag you want 
 
-[Runable exemple](https://ouisolutions.github.io/OUIsolutions/Tag23/internal/exemples/print.html)
+[Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/print.html)
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Tag23@main/versions/Tag23_v0.1.5.js"></script>
 </head>
 <body>
     <script>
@@ -81,3 +81,61 @@ For printing values you just need to add the properties **print** to any tag you
 
 Conditions can be determined by the keywords **case** e **unless** 
 
+[Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/conditions.html)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="https://cdn.jsdelivr.net/gh/Tag23@main/versions/Tag23_v0.1.5.js"></script>
+</head>
+<body>
+    <script>
+        let data = {};
+    </script>
+    <h3>Name</h3>
+    <input  onchange="data.name = this.value" placeholder="name">
+
+    <h3>Email</h3>
+    <input  onchange="data.email = this.value" placeholder="email">
+
+
+    <h3>Password</h3>
+    <input  onchange="data.password = this.value" placeholder="password">
+
+
+    <h3>Repeat Password</h3>
+    <input  onchange="data.repeat_password = this.value" placeholder="repeat password">
+
+    <br>
+
+    <h3 unless="data.repeat_password == data.password "
+        style="color: red"
+    >Passwords must be equal
+    </h3>
+
+    <br>
+    <script>
+        function its_all_correct(){
+            if(!data.name){
+                return false;
+            }
+            if(!data.email){
+                return  false;
+            }
+            if(!data.password){
+                return  false;
+            }
+            if(data.password  !== data.repeat_password){
+                return  false;
+            }
+            return  true;
+        }
+    </script>
+    <button case="its_all_correct()"> Subscribe</button>
+
+
+</body>
+</html>
+```

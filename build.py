@@ -16,7 +16,7 @@ SOURCES = [
 ]
 
 LIB_NAME = 'Tag23'
-REPO_NAME = 'OUIsolutions/Tag23'
+REPO_NAME = 'Tag23'
 
 
 def create_output():

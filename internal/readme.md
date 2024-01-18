@@ -22,3 +22,4 @@ For printing values you just need to add the properties **print** to any tag you
 
 Conditions can be determined by the keywords **case** e **unless** 
 
+#page_ref:conditions.html
