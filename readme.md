@@ -182,7 +182,13 @@ to run on the main loop
 ```
 
 ## For Loops 
-you can create loops in object or list easily, by using the **for** and **in** keyworkds
+you can create loops in object or list easily, by using the **for** and **in** keywords
+in these example ,the values will be provided by the method **this<for>_<action>**
+example:
+
+* thhis.x() = returns the element
+* this.x_index() = returns the index
+* this.x_destry() = destroy the element
 
 [Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/for_array.html)
 ```html
@@ -192,14 +198,24 @@ you can create loops in object or list easily, by using the **for** and **in** k
     <meta charset="UTF-8">
     <title>Counter</title>
     <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <style>
+        .json_code{
+            width: 40%;
+            background-color: #00003b;
+            color: white;
+            position: absolute;
+            left: 40%;
+            top: 10%;
+        }
+        .form_div{
+            background-color: #e0e0e0;
+            width: 30%;
+        }
+    </style>
 </head>
 <body>
     <script>
         let data = [
-            {
-                "name":"mateus",
-                "age":27
-            },
             {
                 "name":"user1",
                 "age":30
@@ -210,19 +226,30 @@ you can create loops in object or list easily, by using the **for** and **in** k
             }
         ];
     </script>
-    <div for="x" in="data">
+    <div for="x" in="data" class="form_div">
 
-        <h1>Name:
-            <span print="this.x()['name']"></span>
-            Age:  <span print="this.x()['age']"></span>
-            Index:  <span print="this.x_index()"></span>
-        </h1>
-        <button onclick="this.x_destroy()">Destroy</button>
+        <h4>Name</h4>
+        <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
+
+        <h4>Age</h4>
+        <input type="number" set_value="this.x()['age']" onchange="this.x()['name'] = Number(this.value)">
+        <br>
+
+        <button onclick="this.x_destroy()">Destroy <span print="this.x_index()"></span></button>
+
+        <br>
         <br>
 
 
     </div>
    <button onclick="data.push({})"> Add</button>
+
+
+    <code class="json_code" >
+        <pre print="JSON. stringify(data,null,4)">
+
+        </pre>
+    </code>
 
 </body>
 </html>

@@ -37,6 +37,12 @@ to run on the main loop
 #page_ref:main_loop.html
 
 ## For Loops 
-you can create loops in object or list easily, by using the **for** and **in** keyworkds
+you can create loops in object or list easily, by using the **for** and **in** keywords
+in these example ,the values will be provided by the method **this<for>_<action>**
+example:
+
+* thhis.x() = returns the element
+* this.x_index() = returns the index
+* this.x_destry() = destroy the element
 
 #page_ref:for_array.html
