@@ -10,8 +10,9 @@ SOURCES = [
     "src/extra.js",
     "src/actions/conditions.js",
     "src/actions/for.js",
+   "src/actions/for_arrays.js",
+   "src/actions/for_objects.js",
     "src/actions/geral.js",
-
     "src/main.js"
 ]
 
