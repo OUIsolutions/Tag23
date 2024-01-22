@@ -214,7 +214,8 @@ you can create loops in object or list easily, by using the **for** and **in** k
 
         <h1>Name:  <span print="this.x()['name']"></span></h1>
         <h1>Age:  <span print="this.x()['age']"></span></h1>
-        <button onclick="this.destroy()">Destroy</button>
+        <h1>Index:  <span print="this.x_index()"></span></h1>
+        <button onclick="this.x_destroy()">Destroy</button>
         <br>
 
     </div>
