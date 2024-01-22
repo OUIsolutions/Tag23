@@ -22,7 +22,12 @@
         let list = [1,2,3,4];
 
     </script>
-    <h1 for="x" in="list"> <span print="this.x()"></span> </h1>
+    <div  for="x" in="list">
+         <span print="this.x()"></span>
+        <button onclick="list.splice(this.x_index(),1)">Remove</button>
+    </div>
+    <button onclick="list.push(10)">add</button>
+
     <h2>aaaaaaaa</h2>
 </body>
 </html>

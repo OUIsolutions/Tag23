@@ -64,11 +64,14 @@ function  tag_23_create_element_methods(value_as,array_value,elements){
         set_value_recursively_in_element(current_element,value_as,get_element);
 
 
-        let index_name =  `${value_as}_index`;
+        let index_name =  `${value_as}_${TAG_23_INDEX}`;
         function  get_index(){
             return i;
         }
         set_value_recursively_in_element(current_element,index_name,get_index);
+
+
+
     }
 }
 
