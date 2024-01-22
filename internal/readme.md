@@ -46,3 +46,8 @@ example:
 * this.x_destry() = destroy the element
 
 #page_ref:for_array.html
+
+### For with Objects
+its also possible to work with objects
+
+#page_ref:for_objects.html

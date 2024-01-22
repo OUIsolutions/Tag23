@@ -232,7 +232,7 @@ example:
         <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
 
         <h4>Age</h4>
-        <input type="number" set_value="this.x()['age']" onchange="this.x()['name'] = Number(this.value)">
+        <input type="number" set_value="this.x()['age']" onchange="this.x()['age'] = Number(this.value)">
         <br>
 
         <button onclick="this.x_destroy()">Destroy <span print="this.x_index()"></span></button>
@@ -243,6 +243,74 @@ example:
 
     </div>
    <button onclick="data.push({})"> Add</button>
+
+
+    <code class="json_code" >
+        <pre print="JSON. stringify(data,null,4)">
+
+        </pre>
+    </code>
+
+</body>
+</html>
+```
+
+### For with Objects
+its also possible to work with objects
+
+[Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/for_objects.html)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <style>
+        .json_code{
+            width: 40%;
+            background-color: #00003b;
+            color: white;
+            position: absolute;
+            left: 40%;
+            top: 10%;
+        }
+        .form_div{
+            background-color: #e0e0e0;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let data = {
+            "user1":{
+                "name": "user1",
+                "age": 30
+            },
+            "user2":{
+                "name": "user2",
+                "age": 22
+            }
+        };
+    </script>
+    <div for="x" in="data" class="form_div">
+
+        <h4>Name</h4>
+        <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
+
+        <h4>Age</h4>
+        <input type="number" set_value="this.x()['age']" onchange="this.x()['age'] = Number(this.value)">
+        <br>
+
+        <button onclick="this.x_destroy()">Destroy <span print="this.x_key()"></span></button>
+
+        <br>
+        <br>
+
+
+    </div>
+
 
 
     <code class="json_code" >
