@@ -48,7 +48,7 @@ function tag23_print(current_element){
     let text = current_element.getAttribute(TAG_23_PRINT);
 
     let evaluation = tag23get_evaluation_result(current_element,text);
-    if(evaluation){
+    if(evaluation !== undefined && evaluation !== null){
         current_element.innerHTML = evaluation;
     }
 }

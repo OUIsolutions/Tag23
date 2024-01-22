@@ -7,7 +7,7 @@ For install you just need to add the **script** tag in the head of your browser
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
 
 ```
 
@@ -26,7 +26,7 @@ to show the value based on colors
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
 </head>
 <body>
 <script>let a = 0</script>
@@ -51,7 +51,7 @@ For printing values you just need to add the properties **print** to any tag you
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
 </head>
 <body>
     <script>
@@ -98,7 +98,7 @@ Conditions can be determined by the keywords **case** e **unless**
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
 </head>
 <body>
     <script>
@@ -164,7 +164,7 @@ to run on the main loop
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
 </head>
 <body>
 <script>
@@ -191,7 +191,7 @@ you can create loops in object or list easily, by using the **for** and **in** k
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
 </head>
 <body>
     <script>
@@ -212,11 +212,14 @@ you can create loops in object or list easily, by using the **for** and **in** k
     </script>
     <div for="x" in="data">
 
-        <h1>Name:  <span print="this.x()['name']"></span></h1>
-        <h1>Age:  <span print="this.x()['age']"></span></h1>
-        <h1>Index:  <span print="this.x_index()"></span></h1>
+        <h1>Name:
+            <span print="this.x()['name']"></span>
+            Age:  <span print="this.x()['age']"></span>
+            Index:  <span print="this.x_index()"></span>
+        </h1>
         <button onclick="this.x_destroy()">Destroy</button>
         <br>
+
 
     </div>
    <button onclick="data.push({})"> Add</button>
