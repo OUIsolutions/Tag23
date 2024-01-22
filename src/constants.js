@@ -8,9 +8,12 @@ const TAG_23_EVALUATED = "evaluated"
 const TAG_23_FOR = "for";
 const  TAG_23_IN = "in";
 const TAG_23_INDEX = "index";
+const  TAG_23_KEY = 'key'
 const TAG_23_DESTROY = "destroy";
 const TAG_23_HIDE ="none";
 const  TAG_23_SHOW = 'block';
 const TAG_23_OBJECT ='Object';
+const TAG_23_ARRAY ='Array';
+
 
 
