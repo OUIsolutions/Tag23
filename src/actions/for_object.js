@@ -5,10 +5,11 @@
  */
 function  tag_23_create_element_methods_objects(value_as,object_value,elements){
 
+    let i = 0;
 
-
-    for(let key of object_value){
+    for(let key in object_value){
         let current_element = elements[i];
+        i+=1;
 
         function  get_element(){
             return object_value[key]
@@ -20,6 +21,7 @@ function  tag_23_create_element_methods_objects(value_as,object_value,elements){
         function  get_key(){
             return key;
         }
+
         set_value_recursively_in_element(current_element,key_name,get_key);
 
         let destroy_name =  `${value_as}_${TAG_23_DESTROY}`;

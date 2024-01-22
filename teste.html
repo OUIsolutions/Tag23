@@ -22,14 +22,18 @@
     <script>
 
 
-        let list = [1,2,3,4]
+        let list = {
+            '1':1,
+            '2':2,
+            '3':3
+        }
     </script>
     <div  for="x" in="list">
          <span print="this.x()"></span>
         <button onclick="this.x_destroy()">Remove</button>
     </div>
-    <button onclick="list.push(10)">add</button>
+  
 
-    <h2>aaaaaaaa</h2>
+        <h2>aaaaaaaa</h2>
 </body>
 </html>
