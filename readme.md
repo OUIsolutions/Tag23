@@ -181,3 +181,45 @@ to run on the main loop
 </html>
 ```
 
+## For Loops 
+you can create loops in object or list easily, by using the **for** and **in** keyworkds
+
+[Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/for_array.html)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.8.js"></script>
+</head>
+<body>
+    <script>
+        let data = [
+            {
+                "name":"mateus",
+                "age":27
+            },
+            {
+                "name":"user1",
+                "age":30
+            },
+            {
+                "name":"user2",
+                "age":22
+            }
+        ];
+    </script>
+    <div for="x" in="data">
+
+        <h1>Name:  <span print="this.x()['name']"></span></h1>
+        <h1>Age:  <span print="this.x()['age']"></span></h1>
+        <button onclick="this.destroy()">Destroy</button>
+        <br>
+
+    </div>
+   <button onclick="data.push({})"> Add</button>
+
+</body>
+</html>
+```

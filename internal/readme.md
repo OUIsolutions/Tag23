@@ -36,3 +36,7 @@ to run on the main loop
 
 #page_ref:main_loop.html
 
+## For Loops 
+you can create loops in object or list easily, by using the **for** and **in** keyworkds
+
+#page_ref:for_array.html
