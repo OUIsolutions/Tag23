@@ -39,7 +39,8 @@ function tag_23_insert_clones(current_element,old_elements,array_size){
         clone.removeAttribute(TAG_23_IN);
         clone.element_of = current_element;
         let father  = current_element.parentElement;
-        father.insertBefore(clone,current_element);
+        let next = current_element.nextSibling;
+        father.insertBefore(clone,next);
         old_elements.push(clone);
     }
 }
@@ -75,6 +76,7 @@ function tag23_for(loop_props){
     if(old_elements.length < array_value.length){
         tag_23_insert_clones(current,old_elements,array_value.length);
     }
+
 
 }
 
