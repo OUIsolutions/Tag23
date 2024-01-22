@@ -104,18 +104,7 @@ function tag23_for(loop_props){
     let array_value = tag23get_evaluation_result(current,array_name);
     let old_elements = tag23_get_old_elements(current);
 
-    
-    ///console.log(old_elements);
-
-    if(old_elements.length > array_value.length){
-        tag_23_remove_higher_elements(old_elements,array_value.length);
-    }
-    if(old_elements.length < array_value.length){
-        tag_23_insert_clones(current,old_elements,array_value.length);
-    }
-
-    tag_23_create_element_methods(value_as,array_value,old_elements);
-
+    tag23_for_array(current,array_value,old_elements,value_as);
 
 
 
