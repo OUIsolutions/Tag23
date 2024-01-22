@@ -31,6 +31,8 @@ function  tag_23_remove_higher_elements(old_elements,array_size){
 function tag_23_insert_clones(current_element,old_elements,array_size){
     let total_to_insert = (array_size - old_elements.length);
 
+    let frag = document.createDocumentFragment();
+
     for(let i = 0; i < total_to_insert; i++){
         let clone = current_element.cloneNode(true);
         clone.setAttribute("i",i);
@@ -38,11 +40,12 @@ function tag_23_insert_clones(current_element,old_elements,array_size){
         clone.removeAttribute(TAG_23_FOR);
         clone.removeAttribute(TAG_23_IN);
         clone.element_of = current_element;
-        let father  = current_element.parentElement;
-        let next = current_element.nextSibling;
-        father.insertBefore(clone,next);
+        frag.appendChild(clone);
         old_elements.push(clone);
     }
+    let father  = current_element.parentElement;
+    let next = current_element.nextSibling;
+    father.insertBefore(frag,next);
 }
 
 /**
