@@ -84,5 +84,5 @@ function start(){
     },TAG_23_TICK_TIME);
 }
 
-window.addEventListener('load',start);
+window.addEventListener(TAG_23_LOAD,start);
 

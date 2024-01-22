@@ -40,7 +40,7 @@ function tag_23_insert_clones(current_element,old_elements,array_size){
 
     for(let i = 0; i < total_to_insert; i++){
         let clone = current_element.cloneNode(true);
-        clone.setAttribute("i",i);
+
         clone.style.display = TAG_23_SHOW;
         clone.removeAttribute(TAG_23_FOR);
         clone.removeAttribute(TAG_23_IN);
@@ -64,12 +64,12 @@ function tag23_for(loop_props){
 
     let value_as = current.getAttribute(TAG_23_FOR);
     if(!value_as){
-        console.log("for value not provided")
+        console.log(TAG_23_FOR_NOT_PROVIDED,current)
         return;
     }
     let array_name =   current.getAttribute(TAG_23_IN);
     if(!array_name){
-        console.log("in not provided")
+        console.log(TAG_23_IN_NOT_PRIVODE,current)
         return;
     }
     /**@type {Array<any>}*/
