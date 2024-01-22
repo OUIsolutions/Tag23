@@ -74,8 +74,11 @@ function  tag_23_create_element_methods(value_as,array_value,elements){
         }
         set_value_recursively_in_element(current_element,index_name,get_index);
 
-
-
+        let destroy_name =  `${value_as}_${TAG_23_DESTROY}`;
+        function  destroy(){
+            array_value.splice(i,1);
+        }
+        set_value_recursively_in_element(current_element,destroy_name,destroy);
     }
 }
 
