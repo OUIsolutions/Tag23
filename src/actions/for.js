@@ -102,9 +102,9 @@ function tag23_for(loop_props){
     }
     /**@type {Array<any>}*/
     let array_value = tag23get_evaluation_result(current,array_name);
-
     let old_elements = tag23_get_old_elements(current);
 
+    
     ///console.log(old_elements);
 
     if(old_elements.length > array_value.length){
