@@ -29,7 +29,7 @@ to show the value based on colors
     <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
 </head>
 <body>
-<div Tag23Start>
+<div Tag23Start style="display: none;">
 
     <script>let a = 0</script>
     <button onclick="a-=1"> Decrement a</button>
@@ -58,7 +58,7 @@ For printing values you just need to add the properties **print** to any tag you
     <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
 </head>
 <body>
-    <div Tag23Start>
+    <div Tag23Start style="display: none;">
         <script>
             let data = {};
         </script>
@@ -109,7 +109,7 @@ Conditions can be determined by the keywords **case** e **unless**
     <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
 </head>
 <body>
-    <div Tag23Start>
+    <div Tag23Start style="display: none;">
         <script>
             let data = {};
         </script>
@@ -195,7 +195,7 @@ example:
     </style>
 </head>
 <body>
-    <div Tag23Start>
+    <div Tag23Start style="display: none;">
         <script>
             let data = [
                 {
@@ -266,7 +266,7 @@ its also possible to work with objects
     </style>
 </head>
 <body>
-<div Tag23Start>
+<div Tag23Start style="display: none;">
     <script>
         let data = {
             "user1":{
@@ -328,7 +328,7 @@ to run on the main loop
     <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
 </head>
 <body>
-<div Tag23Start>
+<div Tag23Start style="display: none;">
     <script>
         let total_iterations = 0;
     </script>
