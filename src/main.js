@@ -76,10 +76,6 @@ function start(){
 
     tag23run_loop(document);
 
-    let starter_elements =document.getElementsByClassName(TAG_23_START);
-    for(let element of starter_elements){
-        element.style.display =TAG_23_SHOW;
-    }
 
     setInterval(function(){
          TAG_23_CURRENT_TICK+=1;
