@@ -50,7 +50,7 @@ function tag23_execute_internal_main_loop_actions(loop_props){
 /**
  * @param {HTMLElement || Document} target
  * */
-function run_loop(target){
+function tag23run_loop(target){
 
 
     for(let i=0;i<target.children.length;i++){
@@ -65,7 +65,7 @@ function run_loop(target){
         i = loop_props.index;
         
         if(!loop_props.skip){
-            run_loop(loop_props.current_element);
+            tag23run_loop(loop_props.current_element);
         }
 
 
@@ -74,14 +74,20 @@ function run_loop(target){
 }
 function start(){
 
-    run_loop(document);
+    tag23run_loop(document);
+
+    let starter_elements =document.getElementsByClassName(TAG_23_START);
+    for(let element of starter_elements){
+        element.style.display =TAG_23_SHOW;
+    }
 
     setInterval(function(){
          TAG_23_CURRENT_TICK+=1;
          TAG_23_TIME_PASSED+=TAG_23_TICK_TIME;
 
-         run_loop(document.body);
+         tag23run_loop(document.body);
     },TAG_23_TICK_TIME);
+
 }
 
 window.addEventListener(TAG_23_LOAD,start);

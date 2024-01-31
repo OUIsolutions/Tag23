@@ -1,4 +1,3 @@
-const TAG_23_START = "start";
 const TAG_23_CASE = "case";
 const TAG_23_UNLESS = "unless"
 const TAG_23_SET_VALUE = "set_value";
@@ -8,17 +7,27 @@ const TAG_23_EVALUATED = "evaluated"
 const TAG_23_FOR = "for";
 const  TAG_23_IN = "in";
 const TAG_23_INDEX = "index";
+const  TAG_23_KEY = "key"
 const TAG_23_DESTROY = "destroy";
 const TAG_23_HIDE ="none";
-const  TAG_23_SHOW = 'block';
-
-const TAG_23_TICK_DEFAULT_TIME = 40;
+const  TAG_23_SHOW = "block";
+const TAG_23_OBJECT ="Object";
+const TAG_23_ARRAY ="Array";
+const  TAG_23_TRUE = "true";
+const TAG_23_FOR_NOT_PROVIDED = "for value not provided";
+const TAG_23_IN_NOT_PRIVODE = "in not provided";
+const  TAG_23_LOAD = "load";
+const TAG_23_START = "Tag23Start";
 
 
 let TAG_23_CURRENT_TICK = 0;
 let TAG_23_TIME_PASSED = 0;
 /**@type {Array<function>}*/
 let TAG_23_MAIN_LOOP_CALLBACKS = [];
+
+let TAG_23_TICK_TIME = 40;
+/**@type {Array<string>}*/
+let TAG_23_SHOWED_MESSAGES = [];
 
 
 /**
@@ -33,7 +42,7 @@ function tag23_execute_users_main_loop(callback){
         try{
             callback();
         }catch (error){
-            console.log(error);
+            tag23_show_error_message(error);
         }
     })
 }
@@ -68,6 +77,18 @@ function set_value_recursively_in_element(target,name,value){
         set_value_recursively_in_element(child,name,value);
     }
 
+}
+
+/**@param {Error} error*/
+function  tag23_show_error_message(error){
+    let formatted = String(error);
+
+
+    if(TAG_23_SHOWED_MESSAGES.includes(formatted)){
+       return;
+    }
+    TAG_23_SHOWED_MESSAGES.push(String(formatted));
+    console.log(error);
 }
 /**@param {Tag23LoopProps} loop_props
  * */
@@ -109,30 +130,57 @@ function tag23_unless(loop_props){
 }
 
 
-function tag23_get_old_elements(father,index,iterator){
-    let elements = [];
-    for(let i = 0;i< father.children.length;i++){
-        let point = i+index+1;
-        let current = father.children[point];
-        if(!current){
-            break;
+/**@param {HTMLElement} element
+ * @return {Array<HTMLElement>}
+ */
+function tag23_get_old_elements(element){
+    let father = element.parentElement;
+    /**@type {Array<HTMLElement || ChildNode>}*/
+    let filtered = [];
+    father.childNodes.forEach(v =>{
+        if(v.element_of === element){
+            filtered.push(v);
         }
+    })
+    return  filtered;
+}
 
-        if(!current.hasAttribute(TAG_23_INDEX)){
-            let name = current.getAttribute(TAG_23_IN);
-            if(name !== iterator){
-                break;
-            }
-        }
-
-
-        elements.push({
-            index: parseInt(current.getAttribute(TAG_23_INDEX)),
-            order:i,
-            element:current
-        });
+/**
+ * @param {Array<HTMLElement>} old_elements
+ * @param {number} array_size
+ */
+function  tag_23_remove_higher_elements(old_elements,array_size){
+    for(let i = array_size; i < old_elements.length; i++){
+        old_elements[i].remove();
     }
-    return elements;
+}
+/**
+ * @param {HTMLElement} current_element
+ * @param {Array<HTMLElement>} old_elements
+ * @param {number} array_size
+ */
+function tag_23_insert_clones(current_element,old_elements,array_size){
+    let total_to_insert = (array_size - old_elements.length);
+    let father  = current_element.parentElement;
+
+    let last  = current_element;
+
+    if(old_elements.length >0){
+        last = old_elements[old_elements.length-1];
+    }
+
+    for(let i = 0; i < total_to_insert; i++){
+        let clone = current_element.cloneNode(true);
+
+        clone.style.display = TAG_23_SHOW;
+        clone.removeAttribute(TAG_23_FOR);
+        clone.removeAttribute(TAG_23_IN);
+        clone.element_of = current_element;
+        let next = last.nextSibling;
+        father.insertBefore(clone,next);
+        old_elements.push(clone);
+        last = clone;
+    }
 }
 
 
@@ -140,107 +188,31 @@ function tag23_get_old_elements(father,index,iterator){
 /**@param {Tag23LoopProps} loop_props
  */
 function tag23_for(loop_props){
+
     loop_props.skip = true;
     let current = loop_props.current_element;
     current.style.display = TAG_23_HIDE;
 
     let value_as = current.getAttribute(TAG_23_FOR);
     if(!value_as){
-        console.log("for value not provided")
+        console.log(TAG_23_FOR_NOT_PROVIDED,current)
         return;
     }
-    let index_name = `${value_as}_${TAG_23_INDEX}`
-    let destroy_name = `${value_as}_${TAG_23_DESTROY}`
     let array_name =   current.getAttribute(TAG_23_IN);
     if(!array_name){
-        console.log("in not provided")
+        console.log(TAG_23_IN_NOT_PRIVODE,current)
         return;
     }
     /**@type {Array<any>}*/
     let array_value = tag23get_evaluation_result(current,array_name);
-    if(!array_value){
-        return;
+    let old_elements = tag23_get_old_elements(current);
+
+    if(array_value.constructor.name === TAG_23_ARRAY){
+        tag23_for_array(current,array_value,old_elements,value_as);
     }
-    //iterated over the brothers of child
-    let father = current.parentNode;
-    let elements = tag23_get_old_elements(father,loop_props.index,array_name);
-
-
-
-    for(let j=0;j<array_value.length;j++){
-        //verify if j its not present on elements
-        let found = false;
-        for(let k=0;k<elements.length;k++){
-            if(elements[k].index === j){
-                found = true;
-                break;
-            }
-        }
-        if(found){
-            continue;
-        }
-
-        let created = current.cloneNode(true);
-        created.style.display = TAG_23_SHOW;
-        //remove attribute for
-        created.removeAttribute(TAG_23_FOR);
-
-        set_value_recursively_in_element(created,value_as,()=>{
-            return array_value[j];
-        })
-
-        set_value_recursively_in_element(created,index_name,()=>{
-            return j;
-        })
-
-        set_value_recursively_in_element(created,destroy_name,()=>{
-            array_value.splice(j,1);
-        })
-
-
-        created.setAttribute(TAG_23_INDEX,j);
-        elements.push({
-            index:j,
-            element:created
-        });
+    if (array_value.constructor.name === TAG_23_OBJECT){
+        tag23_for_object(current,array_value,old_elements,value_as);
     }
-
-
-
-    //sort elements by index
-    elements.sort((a,b)=>a.index-b.index);
-    let its_all_correct = true;
-    for(let j=0;j<elements.length;j++){
-        if(elements[j].order !== j){
-            its_all_correct = false;
-            break;
-        }
-    }
-
-    if(its_all_correct && elements.length === array_value.length){
-        return;
-    }
-
-    //console.log(elements);
-    //console.log(array_value);
-
-
-    let fragment = document.createDocumentFragment();
-    for(let j=0;j<elements.length;j++){
-        //verify if j its not present on elements
-        let current = elements[j];
-
-
-
-        if(current.element.parentNode === father){
-            current.element = father.removeChild(current.element);
-        }
-        if(current.index <= array_value.length -1){
-            fragment.appendChild(current.element);
-        }
-
-    }
-    father.insertBefore(fragment,current.nextSibling);
 
 
 
@@ -248,6 +220,115 @@ function tag23_for(loop_props){
 
 
 
+/**
+ * @param {string} value_as
+ @param {Array<any>} array_value
+ * @param {Array<HTMLElement>} elements
+ */
+function  tag_23_create_element_methods_array(value_as,array_value,elements){
+
+    for(let i = 0; i < array_value.length;i++){
+        let current_element = elements[i];
+
+        function  get_element(){
+            return array_value[i]
+        }
+        set_value_recursively_in_element(current_element,value_as,get_element);
+
+
+        let index_name =  `${value_as}_${TAG_23_INDEX}`;
+        function  get_index(){
+            return i;
+        }
+        set_value_recursively_in_element(current_element,index_name,get_index);
+
+        let destroy_name =  `${value_as}_${TAG_23_DESTROY}`;
+        function  destroy(){
+            array_value.splice(i,1);
+        }
+        set_value_recursively_in_element(current_element,destroy_name,destroy);
+    }
+}
+
+/**
+ * @param {HTMLElement} current
+ * @param {Array<any>} array_value
+ * @param {Array<HTMLElement>} old_elements
+ * @param {string} value_as
+ * */
+function tag23_for_array(current,array_value,old_elements,value_as) {
+
+    let array_size = array_value.length;
+    let old_elements_size = old_elements.length;
+
+
+    if(old_elements_size > array_size){
+        tag_23_remove_higher_elements(old_elements,array_size);
+    }
+    if(old_elements_size< array_size){
+        tag_23_insert_clones(current,old_elements,array_size);
+    }
+
+    tag_23_create_element_methods_array(value_as,array_value,old_elements);
+
+}
+/**
+ * @param {string} value_as
+ @param {Object} object_value
+ * @param {Array<HTMLElement>} elements
+ */
+function  tag_23_create_element_methods_objects(value_as,object_value,elements){
+
+    let i = 0;
+
+    for(let key in object_value){
+        let current_element = elements[i];
+        i+=1;
+
+        function  get_element(){
+            return object_value[key]
+        }
+        set_value_recursively_in_element(current_element,value_as,get_element);
+
+
+        let key_name =  `${value_as}_${TAG_23_KEY}`;
+        function  get_key(){
+            return key;
+        }
+
+        set_value_recursively_in_element(current_element,key_name,get_key);
+
+        let destroy_name =  `${value_as}_${TAG_23_DESTROY}`;
+        function  destroy(){
+            delete  object_value[key];
+        }
+        set_value_recursively_in_element(current_element,destroy_name,destroy);
+    }
+}
+
+/**
+ * @param {HTMLElement} current
+ * @param {Object} object_value
+ * @param {Array<HTMLElement>} old_elements
+ * @param {string} value_as
+ * */
+function tag23_for_object(current,object_value,old_elements,value_as) {
+
+
+    let object_size = Object.keys(object_value).length;
+    let old_elements_size = old_elements.length;
+
+
+    if(old_elements_size > object_size){
+        tag_23_remove_higher_elements(old_elements,object_size);
+    }
+    if(old_elements_size< object_size){
+        tag_23_insert_clones(current,old_elements,object_size);
+    }
+
+    tag_23_create_element_methods_objects(value_as,object_value,old_elements);
+
+}
 
 
 
@@ -271,7 +352,7 @@ function tag23_value(current_element){
 
     let tag_data = current_element.getAttribute(TAG_23_DEFAULT_VALUE);
     current_element.value = tag23get_evaluation_result(current_element,tag_data);
-    current_element.setAttribute(TAG_23_EVALUATED,'true');
+    current_element.setAttribute(TAG_23_EVALUATED,TAG_23_TRUE);
 
 }
 
@@ -279,36 +360,16 @@ function tag23_value(current_element){
  */
 function tag23_set_value(current_element){
 
+    if(document.activeElement === current_element){
+        return;
+    }
     let name_of_var = current_element.getAttribute(TAG_23_SET_VALUE);
 
-    if(document.activeElement === current_element){
-        let var_type = undefined;
-        try{
-            //the variable cannot exist
-            eval(`var_type =${name_of_var}.constructor.name`);
-        }catch (error){}
-        if(var_type === 'Number'){
-            eval(`${name_of_var} = Number(current_element.value)`);
-        }
-
-        if(var_type !== 'Number'){
-            eval(`${name_of_var} = current_element.value`);
-        }
-
+    //the variable cannot exist
+    let value = tag23get_evaluation_result(current_element,name_of_var);
+    if(value !== undefined && value !== null){
+        current_element.value = value;
     }
-
-    if(document.activeElement !== current_element){
-
-        try {
-            //the variable cannot exist
-            let value = tag23get_evaluation_result(current_element,name_of_var);
-            if(value !== undefined && value !== null){
-                current_element.value = value;
-            }
-        }catch (error){}
-
-    }
-
 
 }
 
@@ -316,9 +377,13 @@ function tag23_set_value(current_element){
  */
 function tag23_print(current_element){
     let text = current_element.getAttribute(TAG_23_PRINT);
-    current_element.innerHTML = tag23get_evaluation_result(current_element,text);
 
+    let evaluation = tag23get_evaluation_result(current_element,text);
+    if(evaluation !== undefined && evaluation !== null){
+        current_element.innerHTML = evaluation;
+    }
 }
+
 
 
 
@@ -362,7 +427,7 @@ function tag23_execute_internal_main_loop_actions(loop_props){
             catch (error){
                 loop_props.skip = true;
                 current_element.style.display = TAG_23_HIDE;
-                console.error(error);
+                tag23_show_error_message(error);
             }
         }
     }
@@ -373,7 +438,7 @@ function tag23_execute_internal_main_loop_actions(loop_props){
 /**
  * @param {HTMLElement || Document} target
  * */
-function run_loop(target){
+function tag23run_loop(target){
 
 
     for(let i=0;i<target.children.length;i++){
@@ -388,7 +453,7 @@ function run_loop(target){
         i = loop_props.index;
         
         if(!loop_props.skip){
-            run_loop(loop_props.current_element);
+            tag23run_loop(loop_props.current_element);
         }
 
 
@@ -397,23 +462,22 @@ function run_loop(target){
 }
 function start(){
 
-    run_loop(document);
-    let time = TAG_23_TICK_DEFAULT_TIME;
+    tag23run_loop(document);
 
-    try{
-        //maybe the user can define it
-        if(TAG_23_TICk_TIME){
-            time = Number(TAG_23_TICk_TIME);
-        }
-    }catch (error){}
-        setInterval(function(){
-         TAG_23_CURRENT_TICK++;
-         TAG_23_TIME_PASSED+=time;
+    let starter_elements =document.getElementsByClassName(TAG_23_START);
+    for(let element of starter_elements){
+        element.style.display =TAG_23_SHOW;
+    }
 
-         run_loop(document.body);
-    },time);
+    setInterval(function(){
+         TAG_23_CURRENT_TICK+=1;
+         TAG_23_TIME_PASSED+=TAG_23_TICK_TIME;
+
+         tag23run_loop(document.body);
+    },TAG_23_TICK_TIME);
+
 }
 
-window.addEventListener('load',start);
+window.addEventListener(TAG_23_LOAD,start);
 
 

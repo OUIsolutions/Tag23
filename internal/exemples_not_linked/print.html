@@ -3,37 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
     <script #lib#></script>
 </head>
 <body>
-    <script>
-        let data = {};
-    </script>
-    <h3>Name</h3>
+    <div class="Tag23Start">
+        <script>
+            let data = {};
+        </script>
+        <h3>Name</h3>
 
-    <input  onchange="data.name = this.value" placeholder="name">
-    <h3>Age</h3>
-
-
-    <input onchange="data.age = this.value" placeholder="age">
+        <input  onchange="data.name = this.value" placeholder="name">
+        <h3>Age</h3>
 
 
-    <h3>Profession</h3>
-    <input onchange="data.profession = this.value" placeholder="profession">
-
-    <h3>Gender</h3>
-    <select onchange="data.gender = this.value">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
+        <input onchange="data.age = this.value" placeholder="age">
 
 
-    <br>
+        <h3>Profession</h3>
+        <input onchange="data.profession = this.value" placeholder="profession">
 
-    <p> Your name is <span print="data.name"></span>
-        you are <span print="data.age"></span> years old,
-        you work as an <span print="data.profession"></span>
-        and you are a <span print="data.gender"></span>
-    </p>
+        <h3>Gender</h3>
+        <select onchange="data.gender = this.value">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+
+        <br>
+
+        <p> Your name is <span print="data.name"></span>
+            you are <span print="data.age"></span> years old,
+            you work as an <span print="data.profession"></span>
+            and you are a <span print="data.gender"></span>
+        </p>
+    </div>
+
 </body>
 </html>

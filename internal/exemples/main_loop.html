@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
 </head>
 <body>
-<script>
-    let total_iterations = 0;
-</script>
-<script>tag23_main_loop(()=>{
+<div class="Tag23Start">
+    <script>
+        let total_iterations = 0;
+    </script>
+    <script>tag23_main_loop(()=>{
 
-    total_iterations+=1;
-})</script>
+        total_iterations+=1;
+    })</script>
 
-<h1>you are on iteration <span print="total_iterations"></span></h1>
-<h1>its passed  <span print="TAG_23_TIME_PASSED/ 1000"></span> seconds</h1>
+    <h1>you are on iteration <span print="total_iterations"></span></h1>
+    <h1>its passed  <span print="TAG_23_TIME_PASSED/ 1000"></span> seconds</h1>
+</div>
+
 </body>
 </html>

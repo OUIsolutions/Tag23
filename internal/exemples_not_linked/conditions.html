@@ -3,52 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+
     <script #lib#></script>
 </head>
 <body>
-    <script>
-        let data = {};
-    </script>
-    <h3>Name</h3>
-    <input  onchange="data.name = this.value" placeholder="name">
+    <div class="Tag23Start">
+        <script>
+            let data = {};
+        </script>
+        <h3>Name</h3>
+        <input  onchange="data.name = this.value" placeholder="name">
 
-    <h3>Email</h3>
-    <input  onchange="data.email = this.value" placeholder="email">
-
-
-    <h3>Password</h3>
-    <input  onchange="data.password = this.value" placeholder="password">
+        <h3>Email</h3>
+        <input  onchange="data.email = this.value" placeholder="email">
 
 
-    <h3>Repeat Password</h3>
-    <input  onchange="data.repeat_password = this.value" placeholder="repeat password">
+        <h3>Password</h3>
+        <input  onchange="data.password = this.value" placeholder="password">
 
-    <br>
 
-    <h3 unless="data.repeat_password == data.password "
-        style="color: red"
-    >Passwords must be equal
-    </h3>
+        <h3>Repeat Password</h3>
+        <input  onchange="data.repeat_password = this.value" placeholder="repeat password">
 
-    <br>
-    <script>
-        function its_all_correct(){
-            if(!data.name){
-                return false;
+        <br>
+
+        <h3 unless="data.repeat_password == data.password "
+            style="color: red"
+        >Passwords must be equal
+        </h3>
+
+        <br>
+        <script>
+            function its_all_correct(){
+                if(!data.name){
+                    return false;
+                }
+                if(!data.email){
+                    return  false;
+                }
+                if(!data.password){
+                    return  false;
+                }
+                if(data.password  !== data.repeat_password){
+                    return  false;
+                }
+                return  true;
             }
-            if(!data.email){
-                return  false;
-            }
-            if(!data.password){
-                return  false;
-            }
-            if(data.password  !== data.repeat_password){
-                return  false;
-            }
-            return  true;
-        }
-    </script>
-    <button case="its_all_correct()"> Subscribe</button>
+        </script>
+        <button case="its_all_correct()"> Subscribe</button>
+
+    </div>
 
 
 </body>

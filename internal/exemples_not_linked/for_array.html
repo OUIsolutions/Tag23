@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+
     <script #lib#></script>
     <style>
         .json_code{
@@ -20,42 +22,45 @@
     </style>
 </head>
 <body>
-    <script>
-        let data = [
-            {
-                "name":"user1",
-                "age":30
-            },
-            {
-                "name":"user2",
-                "age":22
-            }
-        ];
-    </script>
-    <div for="x" in="data" class="form_div">
+    <div class="Tag23Start">
+        <script>
+            let data = [
+                {
+                    "name":"user1",
+                    "age":30
+                },
+                {
+                    "name":"user2",
+                    "age":22
+                }
+            ];
+        </script>
+        <div for="x" in="data" class="form_div">
 
-        <h4>Name</h4>
-        <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
+            <h4>Name</h4>
+            <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
 
-        <h4>Age</h4>
-        <input type="number" set_value="this.x()['age']" onchange="this.x()['age'] = Number(this.value)">
-        <br>
+            <h4>Age</h4>
+            <input type="number" set_value="this.x()['age']" onchange="this.x()['age'] = Number(this.value)">
+            <br>
 
-        <button onclick="this.x_destroy()">Destroy <span print="this.x_index()"></span></button>
+            <button onclick="this.x_destroy()">Destroy <span print="this.x_index()"></span></button>
 
-        <br>
-        <br>
-
-
-    </div>
-   <button onclick="data.push({})"> Add</button>
+            <br>
+            <br>
 
 
-    <code class="json_code" >
+        </div>
+        <button onclick="data.push({})"> Add</button>
+
+
+        <code class="json_code" >
         <pre print="JSON. stringify(data,null,4)">
 
         </pre>
-    </code>
+        </code>
+
+    </div>
 
 </body>
 </html>

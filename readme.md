@@ -6,8 +6,8 @@ easy evaluations of values
 For install you just need to add the **script** tag in the head of your browser
 
 ```html
-
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
 
 ```
 
@@ -26,15 +26,21 @@ to show the value based on colors
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
 </head>
 <body>
-<script>let a = 0</script>
-<button onclick="a-=1"> Decrement a</button>
-<button onclick="a+=1"> Increment a</button>
-<br>
-<h1 unless="a >= 0" style="color: red;">the value of a is <span print="a"/> </h1>
-<h1 case="a >= 0" style="color: blue;" >the value of a is <span print="a"/> </h1>
+<div class="Tag23Start">
+
+    <script>let a = 0</script>
+    <button onclick="a-=1"> Decrement a</button>
+    <button onclick="a+=1"> Increment a</button>
+    <br>
+    <h1 unless="a >= 0" style="color: red;">the value of a is <span print="a"/> </h1>
+    <h1 case="a >= 0" style="color: blue;" >the value of a is <span print="a"/> </h1>
+
+</div>
 
 
 </body>
@@ -51,38 +57,42 @@ For printing values you just need to add the properties **print** to any tag you
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
 </head>
 <body>
-    <script>
-        let data = {};
-    </script>
-    <h3>Name</h3>
+    <div class="Tag23Start">
+        <script>
+            let data = {};
+        </script>
+        <h3>Name</h3>
 
-    <input  onchange="data.name = this.value" placeholder="name">
-    <h3>Age</h3>
-
-
-    <input onchange="data.age = this.value" placeholder="age">
+        <input  onchange="data.name = this.value" placeholder="name">
+        <h3>Age</h3>
 
 
-    <h3>Profession</h3>
-    <input onchange="data.profession = this.value" placeholder="profession">
-
-    <h3>Gender</h3>
-    <select onchange="data.gender = this.value">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
+        <input onchange="data.age = this.value" placeholder="age">
 
 
-    <br>
+        <h3>Profession</h3>
+        <input onchange="data.profession = this.value" placeholder="profession">
 
-    <p> Your name is <span print="data.name"></span>
-        you are <span print="data.age"></span> years old,
-        you work as an <span print="data.profession"></span>
-        and you are a <span print="data.gender"></span>
-    </p>
+        <h3>Gender</h3>
+        <select onchange="data.gender = this.value">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+
+        <br>
+
+        <p> Your name is <span print="data.name"></span>
+            you are <span print="data.age"></span> years old,
+            you work as an <span print="data.profession"></span>
+            and you are a <span print="data.gender"></span>
+        </p>
+    </div>
+
 </body>
 </html>
 ```
@@ -98,52 +108,57 @@ Conditions can be determined by the keywords **case** e **unless**
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
 </head>
 <body>
-    <script>
-        let data = {};
-    </script>
-    <h3>Name</h3>
-    <input  onchange="data.name = this.value" placeholder="name">
+    <div class="Tag23Start">
+        <script>
+            let data = {};
+        </script>
+        <h3>Name</h3>
+        <input  onchange="data.name = this.value" placeholder="name">
 
-    <h3>Email</h3>
-    <input  onchange="data.email = this.value" placeholder="email">
-
-
-    <h3>Password</h3>
-    <input  onchange="data.password = this.value" placeholder="password">
+        <h3>Email</h3>
+        <input  onchange="data.email = this.value" placeholder="email">
 
 
-    <h3>Repeat Password</h3>
-    <input  onchange="data.repeat_password = this.value" placeholder="repeat password">
+        <h3>Password</h3>
+        <input  onchange="data.password = this.value" placeholder="password">
 
-    <br>
 
-    <h3 unless="data.repeat_password == data.password "
-        style="color: red"
-    >Passwords must be equal
-    </h3>
+        <h3>Repeat Password</h3>
+        <input  onchange="data.repeat_password = this.value" placeholder="repeat password">
 
-    <br>
-    <script>
-        function its_all_correct(){
-            if(!data.name){
-                return false;
+        <br>
+
+        <h3 unless="data.repeat_password == data.password "
+            style="color: red"
+        >Passwords must be equal
+        </h3>
+
+        <br>
+        <script>
+            function its_all_correct(){
+                if(!data.name){
+                    return false;
+                }
+                if(!data.email){
+                    return  false;
+                }
+                if(!data.password){
+                    return  false;
+                }
+                if(data.password  !== data.repeat_password){
+                    return  false;
+                }
+                return  true;
             }
-            if(!data.email){
-                return  false;
-            }
-            if(!data.password){
-                return  false;
-            }
-            if(data.password  !== data.repeat_password){
-                return  false;
-            }
-            return  true;
-        }
-    </script>
-    <button case="its_all_correct()"> Subscribe</button>
+        </script>
+        <button case="its_all_correct()"> Subscribe</button>
+
+    </div>
 
 
 </body>
@@ -166,7 +181,9 @@ example:
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
     <style>
         .json_code{
             width: 40%;
@@ -183,42 +200,45 @@ example:
     </style>
 </head>
 <body>
-    <script>
-        let data = [
-            {
-                "name":"user1",
-                "age":30
-            },
-            {
-                "name":"user2",
-                "age":22
-            }
-        ];
-    </script>
-    <div for="x" in="data" class="form_div">
+    <div class="Tag23Start">
+        <script>
+            let data = [
+                {
+                    "name":"user1",
+                    "age":30
+                },
+                {
+                    "name":"user2",
+                    "age":22
+                }
+            ];
+        </script>
+        <div for="x" in="data" class="form_div">
 
-        <h4>Name</h4>
-        <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
+            <h4>Name</h4>
+            <input set_value="this.x()['name']" onchange="this.x()['name'] = this.value">
 
-        <h4>Age</h4>
-        <input type="number" set_value="this.x()['age']" onchange="this.x()['age'] = Number(this.value)">
-        <br>
+            <h4>Age</h4>
+            <input type="number" set_value="this.x()['age']" onchange="this.x()['age'] = Number(this.value)">
+            <br>
 
-        <button onclick="this.x_destroy()">Destroy <span print="this.x_index()"></span></button>
+            <button onclick="this.x_destroy()">Destroy <span print="this.x_index()"></span></button>
 
-        <br>
-        <br>
-
-
-    </div>
-   <button onclick="data.push({})"> Add</button>
+            <br>
+            <br>
 
 
-    <code class="json_code" >
+        </div>
+        <button onclick="data.push({})"> Add</button>
+
+
+        <code class="json_code" >
         <pre print="JSON. stringify(data,null,4)">
 
         </pre>
-    </code>
+        </code>
+
+    </div>
 
 </body>
 </html>
@@ -234,7 +254,8 @@ its also possible to work with objects
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
     <style>
         .json_code{
             width: 40%;
@@ -251,6 +272,7 @@ its also possible to work with objects
     </style>
 </head>
 <body>
+<div class="Tag23Start">
     <script>
         let data = {
             "user1":{
@@ -288,6 +310,8 @@ its also possible to work with objects
         </pre>
     </code>
 
+</div>
+
 </body>
 </html>
 ```
@@ -307,19 +331,23 @@ to run on the main loop
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.9.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/style/Tag23_v0.1.css">
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.1.2.js"></script>
 </head>
 <body>
-<script>
-    let total_iterations = 0;
-</script>
-<script>tag23_main_loop(()=>{
+<div class="Tag23Start">
+    <script>
+        let total_iterations = 0;
+    </script>
+    <script>tag23_main_loop(()=>{
 
-    total_iterations+=1;
-})</script>
+        total_iterations+=1;
+    })</script>
 
-<h1>you are on iteration <span print="total_iterations"></span></h1>
-<h1>its passed  <span print="TAG_23_TIME_PASSED/ 1000"></span> seconds</h1>
+    <h1>you are on iteration <span print="total_iterations"></span></h1>
+    <h1>its passed  <span print="TAG_23_TIME_PASSED/ 1000"></span> seconds</h1>
+</div>
+
 </body>
 </html>
 ```
