@@ -21,6 +21,13 @@ For printing values you just need to add the properties **print** to any tag you
 
 #page_ref:print.html
 
+## Evaluation
+
+By adding the prefix "eval" inside any attribute, its evaluates the result
+
+#page_ref:evaluation.html
+
+
 ## Conditions 
 
 Conditions can be determined by the keywords **case** e **unless** 

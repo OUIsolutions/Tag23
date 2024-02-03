@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script #lib#></script>
+
+</head>
+<body>
+<div Tag23Start style="display: none;">
+    <script>
+        let images = [
+            'https://cdn.pixabay.com/photo/2020/08/19/22/51/roe-deer-5502246_1280.jpg',
+            'https://cdn.pixabay.com/photo/2016/05/02/13/17/deer-1367217_1280.jpg',
+            'https://cdn.pixabay.com/photo/2017/08/09/18/24/animal-2615377_1280.jpg'
+        ]
+        let point = 0;
+        function next(){
+            if(point < (images.length - 1)){
+                point+=1;
+                return;
+            }
+            point = 0;
+        }
+        function previews(){
+            if(point > 0){
+                point-=1;
+            }
+        }
+
+    </script>
+    <br>
+    <img evalsrc="images[point]" width="20%" height="20%">
+    <br>
+    <br>
+    <h1> Image  <span print="point"></span></h1>
+    <button onclick="previews()">Previews</button>
+    <button onclick="next()">Next</button>
+
+</div>
+
+</body>
+</html>

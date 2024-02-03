@@ -6,7 +6,7 @@ easy evaluations of values
 For install you just need to add the **script** tag in the head of your browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
 
 ```
 
@@ -26,7 +26,7 @@ to show the value based on colors
     <meta charset="UTF-8">
     <title>Counter</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
 </head>
 <body>
 <div Tag23Start style="display: none;">
@@ -55,7 +55,7 @@ For printing values you just need to add the properties **print** to any tag you
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
 </head>
 <body>
     <div Tag23Start style="display: none;">
@@ -94,6 +94,58 @@ For printing values you just need to add the properties **print** to any tag you
 </html>
 ```
 
+## Evaluation
+
+By adding the prefix "eval" inside any attribute, its evaluates the result
+
+[Runable exemple](https://ouisolutions.github.io/Tag23/internal/exemples/evaluation.html)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
+
+</head>
+<body>
+<div Tag23Start style="display: none;">
+    <script>
+        let images = [
+            'https://cdn.pixabay.com/photo/2020/08/19/22/51/roe-deer-5502246_1280.jpg',
+            'https://cdn.pixabay.com/photo/2016/05/02/13/17/deer-1367217_1280.jpg',
+            'https://cdn.pixabay.com/photo/2017/08/09/18/24/animal-2615377_1280.jpg'
+        ]
+        let point = 0;
+        function next(){
+            if(point < (images.length - 1)){
+                point+=1;
+                return;
+            }
+            point = 0;
+        }
+        function previews(){
+            if(point > 0){
+                point-=1;
+            }
+        }
+
+    </script>
+    <br>
+    <img evalsrc="images[point]" width="20%" height="20%">
+    <br>
+    <br>
+    <h1> Image  <span print="point"></span></h1>
+    <button onclick="previews()">Previews</button>
+    <button onclick="next()">Next</button>
+
+</div>
+
+</body>
+</html>
+```
+
+
 ## Conditions 
 
 Conditions can be determined by the keywords **case** e **unless** 
@@ -106,7 +158,7 @@ Conditions can be determined by the keywords **case** e **unless**
     <meta charset="UTF-8">
     <title>Counter</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
 </head>
 <body>
     <div Tag23Start style="display: none;">
@@ -178,7 +230,7 @@ example:
     <meta charset="UTF-8">
     <title>Counter</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
     <style>
         .json_code{
             width: 40%;
@@ -249,7 +301,7 @@ its also possible to work with objects
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
     <style>
         .json_code{
             width: 40%;
@@ -325,7 +377,7 @@ to run on the main loop
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.23.js"></script>
 </head>
 <body>
 <div Tag23Start style="display: none;">
