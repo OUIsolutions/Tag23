@@ -49,6 +49,9 @@ function tag23_execute_internal_main_loop_actions(loop_props){
         }
     }
 
+    if(loop_props.skip ){
+        return;
+    }
 
 
     for(let attribute of current_element.getAttributeNames()){
