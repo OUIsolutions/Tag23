@@ -6,7 +6,7 @@ easy evaluations of values
 For install you just need to add the **script** tag in the head of your browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
 
 ```
 
@@ -26,7 +26,7 @@ to show the value based on colors
     <meta charset="UTF-8">
     <title>Counter</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
 </head>
 <body>
 <div Tag23Start style="display: none;">
@@ -55,7 +55,7 @@ For printing values you just need to add the properties **print** to any tag you
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
 </head>
 <body>
     <div Tag23Start style="display: none;">
@@ -106,7 +106,7 @@ Conditions can be determined by the keywords **case** e **unless**
     <meta charset="UTF-8">
     <title>Counter</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
 </head>
 <body>
     <div Tag23Start style="display: none;">
@@ -178,7 +178,7 @@ example:
     <meta charset="UTF-8">
     <title>Counter</title>
 
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
     <style>
         .json_code{
             width: 40%;
@@ -249,7 +249,7 @@ its also possible to work with objects
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
     <style>
         .json_code{
             width: 40%;
@@ -325,7 +325,7 @@ to run on the main loop
 <head>
     <meta charset="UTF-8">
     <title>Counter</title>
-    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.21.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/OUIsolutions/Tag23@main/versions/Tag23_v0.22.js"></script>
 </head>
 <body>
 <div Tag23Start style="display: none;">
