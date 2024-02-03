@@ -1,14 +1,9 @@
-
-
 /**
  * @typedef {Object} Tag23LoopProps
  * @property {Element || HTMLInputElement} current_element
  * @property {number} index
  * @property {boolean} skip
  * */
-
-
-
 
 /**
  * @param {Tag23LoopProps} loop_props
@@ -44,14 +39,25 @@ function tag23_execute_internal_main_loop_actions(loop_props){
         }
     }
 
-    
+
+    for(let attribute of current_element.getAttributeNames()){
+        // Check if attribute starts with 'eval'
+        if(attribute.startsWith(TAG_23_EVAL)){
+            // attribute starts with 'eval'
+            let formated_name = attribute.substring(TAG_23_EVAL.length);
+            // Get the attribute content
+            let attribute_content = current_element.getAttribute(attribute);
+            let evaluated = tag23get_evaluation_result(current_element,attribute_content);
+            current_element.setAttribute(formated_name,evaluated);
+
+        }
+    }
 }
 
 /**
  * @param {HTMLElement || Document} target
  * */
 function tag23run_loop(target){
-
 
     for(let i=0;i<target.children.length;i++){
 
@@ -63,19 +69,17 @@ function tag23run_loop(target){
         }
         tag23_execute_internal_main_loop_actions(loop_props);
         i = loop_props.index;
-        
+
         if(!loop_props.skip){
             tag23run_loop(loop_props.current_element);
         }
 
-
     }
-
 }
+
 function start(){
 
     tag23run_loop(document);
-
 
     setInterval(function(){
          TAG_23_CURRENT_TICK+=1;
@@ -87,4 +91,3 @@ function start(){
 }
 
 window.addEventListener(TAG_23_LOAD,start);
-
