@@ -25,6 +25,16 @@ function tag23_execute_internal_main_loop_actions(loop_props){
     }
 
     for(let attribute in callbacks){
+
+          if(attribute.startsWith(TAG_23_EVAL)){
+            // attribute starts with 'eval'
+            let formated_name = attribute.substring(TAG_23_EVAL.length);
+            // Get the attribute content
+            let attribute_content = current_element.getAttribute(attribute);
+            let evaluated = tag23get_evaluation_result(current_element,attribute_content);
+            current_element.setAttribute(formated_name,evaluated);
+
+        }
         if(current_element.hasAttribute(attribute)){
 
             try{
@@ -40,17 +50,30 @@ function tag23_execute_internal_main_loop_actions(loop_props){
     }
 
 
+
     for(let attribute of current_element.getAttributeNames()){
-        // Check if attribute starts with 'eval'
-        if(attribute.startsWith(TAG_23_EVAL)){
-            // attribute starts with 'eval'
-            let formated_name = attribute.substring(TAG_23_EVAL.length);
-            // Get the attribute content
-            let attribute_content = current_element.getAttribute(attribute);
+        
+        if(!attribute.startsWith(TAG_23_EVAL)){
+            continue;
+        }
+
+        // attribute starts with 'eval'
+        let formated_name = attribute.substring(TAG_23_EVAL.length);
+        // Get the attribute content
+        let attribute_content = current_element.getAttribute(attribute);
+        
+        try{
             let evaluated = tag23get_evaluation_result(current_element,attribute_content);
             current_element.setAttribute(formated_name,evaluated);
-
         }
+
+        catch (error){
+            loop_props.skip = true;
+            current_element.style.display = TAG_23_HIDE;
+            tag23_show_error_message(error);
+        }
+
+        
     }
 }
 
