@@ -20,7 +20,12 @@ function tag23_value(current_element){
     }
 
     let tag_data = current_element.getAttribute(TAG_23_DEFAULT_VALUE);
-    current_element.value = tag23get_evaluation_result(current_element,tag_data);
+    let possible_result = tag23get_evaluation_result(current_element,tag_data);
+
+    if(possible_result !== undefined &&possible_result != null){
+        current_element.value = possible_result;
+    }
+
     current_element.setAttribute(TAG_23_EVALUATED,TAG_23_TRUE);
 
 }
