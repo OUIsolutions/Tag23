@@ -63,7 +63,7 @@ function tag23_execute_internal_main_loop_actions(loop_props){
             if(current_element.getAttribute(formated_name) !== evaluated && formated_name !== ''){
                 current_element.setAttribute(formated_name,evaluated);
             }
-            
+
         }
 
         catch (error){
