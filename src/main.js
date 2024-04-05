@@ -59,10 +59,11 @@ function tag23_execute_internal_main_loop_actions(loop_props){
         
         try{
             let evaluated = tag23get_evaluation_result(current_element,attribute_content);
-            if(current_element.getAttribute(formated_name) !== evaluated){
-                current_element.setAttribute(formated_name,evaluated);
 
+            if(current_element.getAttribute(formated_name) !== evaluated && formated_name !== ''){
+                current_element.setAttribute(formated_name,evaluated);
             }
+            
         }
 
         catch (error){
