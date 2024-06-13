@@ -44,6 +44,9 @@ function tag23_set_value(current_element){
     if(value !== undefined && value !== null){
         current_element.value = value;
     }
+    else{
+        current_element.value = ""
+    }
 
 }
 
