@@ -40,10 +40,13 @@ output_name = create_output()
 #replacing html links 
 link = f'https://cdn.jsdelivr.net/gh/OUIsolutions/{REPO_NAME}@main/{output_name}'
 div = f'src="{link}"'
+local_div = f'src="../../{output_name}"'
 
 
 rmtree('internal/exemples',ignore_errors=True)
 makedirs('internal/exemples')
+rmtree('internal/local_examples',ignore_errors=True)
+makedirs('internal/local_examples')
 
 for e in listdir('internal/exemples_not_linked'):
     with open(f'internal/exemples_not_linked/{e}', 'r') as f:
@@ -52,6 +55,11 @@ for e in listdir('internal/exemples_not_linked'):
         with open(f'internal/exemples/{e}', 'w') as f:
             f.write(output)
 
+    with open(f'internal/exemples_not_linked/{e}', 'r') as f:
+         output = f.read()
+         output = output.replace('#lib#', local_div)
+         with open(f'internal/local_examples/{e}', 'w') as f:
+             f.write(output)
 
 exemples = listdir('internal/exemples')
 

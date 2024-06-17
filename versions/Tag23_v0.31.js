@@ -31,6 +31,7 @@ let TAG_23_TICK_TIME = 40;
 let TAG_23_SHOWED_MESSAGES = [];
 
 
+
 /**
  * @param {function} callback
  * */
@@ -99,7 +100,7 @@ function  tag23_show_error_message(error){
  * @param {HTMLElement} element
  * */
 function tag23_remove_case_evaluation(element){
-    let next = element.nextSibling;
+    let next = element.previousElementSibling;
     if(next.element_of === element){
         next.remove();
     }
@@ -110,7 +111,8 @@ function tag23_remove_case_evaluation(element){
  * */
 function tag23_add_case_evaluation_iff_not_exist(father,element){
 
-    let next = element.nextSibling;
+    let next = element.previousElementSibling;
+
     if(next.element_of === element){
         return;
     }
@@ -118,7 +120,8 @@ function tag23_add_case_evaluation_iff_not_exist(father,element){
     let clone = element.cloneNode(true);
     clone.removeAttribute(TAG_23_CASE);
     clone.element_of = element;
-   // father.insertBefore(clone,element)
+    clone.style.display = TAG_23_SHOW;
+    father.insertBefore(clone,element)
 }
 
 /**
@@ -127,7 +130,7 @@ function tag23_add_case_evaluation_iff_not_exist(father,element){
 function tag23_case(loop_props){
 
     let current_element = loop_props.current_element;
-
+    current_element.style.display = TAG_23_HIDE;
     let condition = current_element.getAttribute(TAG_23_CASE);
 
 
