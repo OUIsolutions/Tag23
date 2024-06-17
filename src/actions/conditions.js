@@ -23,7 +23,7 @@ function tag23_add_case_evaluation_iff_not_exist(father,element){
     let clone = element.cloneNode(true);
     clone.removeAttribute(TAG_23_CASE);
     clone.element_of = element;
-    father.insertBefore(clone,element)
+   // father.insertBefore(clone,element)
 }
 
 /**
