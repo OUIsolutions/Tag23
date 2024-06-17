@@ -3,13 +3,14 @@
 /**
  * @param {HTMLElement} element
  * */
-function tag23_remove_case_evaluation(element){
+function tag23_set_case_evaluation_as_trash(element){
     let previews = element.previousElementSibling;
     if(!previews){
         return;
     }
     if(previews.element_of === element){
-        previews.remove();
+        previews.trash = true
+        previews.style.display =  TAG_23_HIDE;
     }
 }
 /**
@@ -19,16 +20,28 @@ function tag23_remove_case_evaluation(element){
 function tag23_add_case_evaluation_iff_not_exist(father,element){
 
     let previews = element.previousElementSibling;
-    if(previews){if(previews.element_of === element){
+
+    if(previews){
+        if(previews.element_of === element &&  !previews.trash){
             return;
         }
+
     }
 
     let clone = element.cloneNode(true);
     clone.removeAttribute(TAG_23_CASE);
     clone.element_of = element;
     clone.style.display = TAG_23_SHOW;
+
+
     father.insertBefore(clone,element)
+    //these prevent  trash acumulation
+    if(previews){
+        if(previews.element_of === element &&  previews.trash){
+            previews.remove();
+        }
+    }
+
 }
 
 /**
@@ -48,7 +61,7 @@ function tag23_case(loop_props){
     }
 
     if(!result){
-        tag23_remove_case_evaluation(current_element);
+        tag23_set_case_evaluation_as_trash(current_element);
     }
 
 
