@@ -4,9 +4,12 @@
  * @param {HTMLElement} element
  * */
 function tag23_remove_case_evaluation(element){
-    let next = element.previousElementSibling;
-    if(next.element_of === element){
-        next.remove();
+    let previews = element.previousElementSibling;
+    if(!previews){
+        return;
+    }
+    if(previews.element_of === element){
+        previews.remove();
     }
 }
 /**
@@ -15,10 +18,10 @@ function tag23_remove_case_evaluation(element){
  * */
 function tag23_add_case_evaluation_iff_not_exist(father,element){
 
-    let next = element.previousElementSibling;
-
-    if(next.element_of === element){
-        return;
+    let previews = element.previousElementSibling;
+    if(previews){if(previews.element_of === element){
+            return;
+        }
     }
 
     let clone = element.cloneNode(true);
@@ -32,7 +35,7 @@ function tag23_add_case_evaluation_iff_not_exist(father,element){
  * @param {Tag23LoopProps} loop_props
  * */
 function tag23_case(loop_props){
-
+    loop_props.skip = true;
     let current_element = loop_props.current_element;
     current_element.style.display = TAG_23_HIDE;
     let condition = current_element.getAttribute(TAG_23_CASE);
